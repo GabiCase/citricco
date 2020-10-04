@@ -4,8 +4,8 @@
 
 ## Components
 
-## Layout
-| Components        | 
+
+| LAYOUT        | 
 | :---      |     
 |Navbar|
 |Footer|

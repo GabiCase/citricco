@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-import Container from 'react-bootstrap/Container'
-
-import { Link } from 'react-router-dom'
+import Container from "react-bootstrap/Container";
 
 export default () => {
-    return (
-        <Container><h1>Citricco Store</h1></Container>
-    )
-}
+  return (
+    <Container>
+      <h1>Citricco Store</h1>
+    </Container>
+  );
+};

@@ -6,13 +6,22 @@
 ```bash
 citricco-app/
 ├── components
-│   └── layout
-│	├── footer
-│	│	└── Footer.js		
-│	└── navbar
-│   		└── Navbar.js
-│  
-     
+│   ├── layout
+│   │	├── footer
+│   │	│	└── Footer.js		
+│   │	└── navbar
+│   │  		└── Navbar.js
+│   ├── pages
+│   │	├── index
+│   │	│	└── Index.js		
+│   │	├── newProduct
+│   │   │	└── NewProduct.js
+│   │	├── productDetails
+│   │	│	└── ProductDetails.js		
+│   │	└── productList
+│   │  		├── ProductCard.js
+│   │		└── ProductList.js
+│   ├── shared		
 ```
 
 

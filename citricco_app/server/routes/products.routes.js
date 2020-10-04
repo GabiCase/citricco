@@ -24,10 +24,24 @@ router.get("/getOneProduct/:product_id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.post("/newProduct", (req, res, next) => {
+
+router.post("/newProduct", (req, res) => {
   Product.create(req.body)
     .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err));
 });
+
+
+// router.put('/editProduct/:product_id', (req, res) => {
+
+//   if (!mongoose.Types.ObjectId.isValid(req.params.product_id)) {
+//     res.status(400).json({ message: 'Specified id is not valid' })
+//     return
+//   }
+
+//   Product.findByIdAndUpdate(req.params.product_id, req.body)
+//     .then(response => res.json(response))
+//     .catch(err => res.status(500).json(err))
+// });
 
 module.exports = router;

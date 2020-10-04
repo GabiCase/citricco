@@ -35,13 +35,14 @@
 | 1         |   Get       |      /            |Home                      
 | 2         |   Get      |       /products/all   | Listado de productos
 |3          |     Get / post  |  /products/details/:id      | Detalles de cada producto
-|4| Get / post | /collections/price=&color=	| Filtrado para  búsqueda (hay que ver qué filtros poner)
-| 5         | Get       |  /pages/about       |  Sobre la tienda, productos y  sus creadoras |
-| 6         |  Get     |    /pages/contact   | Contacto
-| 7         |  Get / post |   /account/login ? | Cuenta de usuario y comprobación de login
-|8 | Get/post | /account/register | Signup
-|9| Post | /account/logout | Logout
-| 10        |     no lo sé   |       /cart   |  Carrito de compra             |
+|4|Get / Post| /products/newProduct| Crear producto
+|5| Get / post | /collections/price=&color=	| Filtrado para  búsqueda (hay que ver qué filtros poner)
+| 6        | Get       |  /pages/about       |  Sobre la tienda, productos y  sus creadoras |
+| 7         |  Get     |    /pages/contact   | Contacto
+| 8         |  Get / post |   /account/login ? | Cuenta de usuario y comprobación de login
+|9 | Get/post | /account/register | Signup
+|10| Post | /account/logout | Logout
+| 11        |     no lo sé   |       /cart   |  Carrito de compra             |
 
 (podríamos añadir en alguna vista una barra simple de búsqueda con ajax)
 

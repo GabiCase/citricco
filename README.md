@@ -5,6 +5,11 @@
 ## Components
 
 ## Layout
+| Components        | 
+| :---      |     
+|Navbar|
+|Footer|
+
 1. Navbar (Logo a "/", Pendientes, contacto, profile, card)
 2.Footer
 

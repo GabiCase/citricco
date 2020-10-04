@@ -22,7 +22,7 @@ const productSchema = new Schema(
     },
     category: {
       type: [String],
-      enum: ["no", "se", "bla", "bla"],
+      enum: ['aros', 'colgantes'],
     },
     ownwer: {
       type: Schema.Types.ObjectId,
@@ -36,5 +36,5 @@ const productSchema = new Schema(
   { timestamps: true }
 );
 
-const Product = mongoose.model("product", productSchema);
+const Product = mongoose.model("Product", productSchema);
 module.exports = Product;

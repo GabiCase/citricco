@@ -3,32 +3,17 @@
 
 
 ## Components
+```bash
+citricco-app/
+├── 
+├──
+├── 
+│   └──
+│   └──
 
-
-| LAYOUT        | 
-| :---      |     
-|Navbar|
-|Footer|
-
-1. Navbar (Logo a "/", Pendientes, contacto, profile, card)
-2.Footer
-
-
-## Pages
-1.Home
-2. Listado de productos
-3. Card product
-4. Profile
-5. login/logout/signup forms
-6. create/edit/delete forms (admin)
-7.card
-
-
-
-## Shared
-
-
-
+        
+     
+```
 
 
 

@@ -5,13 +5,13 @@
 ## Components
 ```bash
 citricco-app/
-├── 
-├──
-├── 
-│   └──
-│   └──
-
-        
+├── components
+│   └── layout
+│	├── footer
+│	│	└── Footer.js		
+│	└── navbar
+│   		└── Navbar.js
+│  
      
 ```
 

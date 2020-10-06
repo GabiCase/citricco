@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class ProductService {
   constructor() {
-    this.api = axios.create({ baseURL: "http://localhost:5000/api" });
+    this.api = axios.create({ baseURL: process.env.REACT_APP_API_URL });
   }
 
   getAllProducts = () => this.api.get("/getAllProducts");

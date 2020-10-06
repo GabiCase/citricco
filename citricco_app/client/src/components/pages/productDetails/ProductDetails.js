@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import productService from "./../../../service/products.service";
 
 class ProductDetails extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {};
     this.productService = new productService();
@@ -24,7 +24,6 @@ class ProductDetails extends Component {
     return (
       <>
         <Container className="details">
-
 
           <main>
             <Row>

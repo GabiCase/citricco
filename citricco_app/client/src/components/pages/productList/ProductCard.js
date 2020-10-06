@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import { Card, Button, Col } from "react-bootstrap";
 
-export default ({ _id, name, image, price }) => {
+export default ({ _id, name, image, price, addToCart }) => {
+
   return (
     <Col sm={12} md={4} lg={3}>
       <Card className="card">
@@ -11,9 +12,9 @@ export default ({ _id, name, image, price }) => {
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Title>{price}€</Card.Title>
-          <Link to="/">
-            <Button variant="sm">Add to cart</Button>
-          </Link>
+
+          <Button onClick={addToCart} variant="sm">Add to cart</Button>
+
           <Link to={`/products/details/${_id}`}>
             <Button variant="sm">Details</Button>
           </Link>

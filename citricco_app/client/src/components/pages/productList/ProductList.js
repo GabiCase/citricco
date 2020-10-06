@@ -11,12 +11,16 @@ import productsService from "../../../service/products.service";
 import ProductCard from "./ProductCard";
 import NewProduct from "../newProduct/NewProduct";
 
+import Spinner from './../../shared/spinner/Spinner'
+
 class ProductsList extends Component {
-  constructor() {
+
+  constructor(props) {
     super();
     this.state = {
       products: [],
       showModal: false,
+      cart: []
     };
     this.productsService = new productsService();
   }
@@ -33,20 +37,29 @@ class ProductsList extends Component {
 
   handleModal = (showModal) => this.setState({ showModal });
 
+  addToCart = (product) => {
+    console.log('estás añadiendo', product)
+    const cartCopy = [...this.state.cart]
+    cartCopy.push(product)
+  }
+
   render() {
+
     return (
       <>
         <Container>
-          <Button onClick={() => this.handleModal(true)} size="sm">
-            Create product
-          </Button>
-
+          {this.props.loggedInUser && this.props.loggedInUser.role === 'admin' && <Button onClick={() => this.handleModal(true)} size="sm">Create product </Button>}
           <main>
             <h1> All products</h1>
             <Row>
-              {this.state.products.map((elm) => (
-                <ProductCard key={elm._id} {...elm} />
-              ))}
+              {
+                this.state.products.length
+                  ?
+                  this.state.products.map(elm =>
+                    <ProductCard addToCart={() => this.addToCart(elm._id)} key={elm._id} {...elm} />)
+                  :
+                  <Spinner />
+              }
             </Row>
           </main>
         </Container>

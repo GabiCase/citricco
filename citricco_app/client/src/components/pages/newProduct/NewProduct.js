@@ -14,6 +14,7 @@ class NewProduct extends Component {
       price: "",
       category: "",
       image: "",
+
     };
     this.productService = new productService();
   }

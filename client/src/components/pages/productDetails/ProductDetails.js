@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-
 import { Link } from 'react-router-dom'
 
+import './ProductDetails.css'
 import { Button, Modal, Col, Row, Container } from "react-bootstrap";
 
 import productService from "./../../../service/products.service";
 
-import Counter from "./../../shared/counter/Counter";
+import CounterDetails from "./../../shared/counter/CounterSmall";
 
 import EditProduct from "../editProduct/EditProduct";
+import SimpleSlider from './Slider'
 
 class ProductDetails extends Component {
   constructor(props) {
@@ -16,8 +17,7 @@ class ProductDetails extends Component {
     this.state = {
       product: undefined,
       showModalEdit: false,
-
-      //aquí está llegando
+      quantity: 0
     };
     this.productService = new productService();
   }
@@ -40,10 +40,25 @@ class ProductDetails extends Component {
       .catch((err) => console.log(err));
   };
 
+  // addToCartDetails = (product) => {
+
+  //   const cartCopy = [...this.state.cart];
+  //   let itemInCart = cartCopy.find((elm) => elm.name === product.name);
+
+  //   if (itemInCart) {
+  //     itemInCart.quantity++;
+  //   } else {
+  //     itemInCart = {
+  //       ...product,
+  //       quantity: 1,
+  //     };
+  //     cartCopy.push(itemInCart);
+  //   }
+  //   this.setState({ cart: cartCopy });
+  // };
+
   render() {
-    {
-      this.state.product && console.log('PROPS DE DETAILS', this.state.product.quantity)
-    }
+    console.log('TODAS LAS PROPS DE DETAILS', this.props)
     return (
       <div>
         {this.state.product && (
@@ -52,10 +67,7 @@ class ProductDetails extends Component {
               <main>
                 <Row>
                   <Col sm={12} md={5}>
-                    <img
-                      src={this.state.product.image}
-                      alt={this.state.product.name}
-                    />
+                    <SimpleSlider img={this.state.product.image} />
                   </Col>
                   <Col sm={12} md={4}>
                     <h4>{this.state.product.name}</h4>
@@ -65,11 +77,13 @@ class ProductDetails extends Component {
                     <div><Link to={`/products/category/${this.state.product.category}`}>{this.state.product.category}</Link>
                     </div>
 
-                    {/* <Counter
-                      quantity={this.state.product.quantity}
-                      increase={() => this.props.increase(this.state.product)}
-                      decrease={() => this.props.decrease(this.state.product)}
-                    /> */}
+                    {this.state.product &&
+                      <CounterDetails
+                        props={this.props}
+                        quantity={this.state.product.quantity}
+                        increase={() => this.props.increase(this.state.product)}
+                        decrease={() => this.props.decrease(this.state.product)}
+                      />}
 
 
                     <div className="buttons">

@@ -6,14 +6,7 @@ import "./Navbar.css";
 import cart from "./images/cart.png";
 import search from "./images/search.png";
 import user from "./images/user.png";
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  NavDropdown,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, NavDropdown, Button } from "react-bootstrap";
 
 import authService from "./../../../service/auth.service";
 import productsService from './../../../service/products.service'
@@ -28,17 +21,16 @@ export default class extends Component {
       cartQuantity: 0,
       search: "",
       showSuggestion: false,
-      showProfileDrop: false,
-      products: []
+      products: [],
     }
     this.authService = new authService();
     this.productsService = new productsService()
   }
+
   handleChange = (e) => {
     const quantity = [...this.state.cartQuantity];
     this.props.cartChanged(e.target.quantity);
   }
-
 
   getCartTotal = () => {
     return this.props.cart.reduce((sum, { quantity }) => sum + quantity, 0);
@@ -72,13 +64,13 @@ export default class extends Component {
                 className="earrings"
               >
                 <NavDropdown.Item>
-                  <Link onClick={() => this.props.refresh('hoops')} to="/products/category/hoops" className="dropdown-item">
+                  <Link to="/products/category/hoops" className="dropdown-item">
                     Hoops
                   </Link>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
-                  <Link onClick={() => this.props.refresh('pendants')} to="/products/category/pendants" className="dropdown-item">
+                  <Link to="/products/category/pendants" className="dropdown-item">
                     Pendants
                   </Link>
                 </NavDropdown.Item>
@@ -132,15 +124,6 @@ export default class extends Component {
                       </Link>
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item>
-                    {/* <Link
-                        className="dropdown-item"
-                        onClick={() => this.logoutUser()}
-                        to="/"
-                      >
-                        Logout
-                      </Link> */}
-                  </NavDropdown.Item>
                 </NavDropdown>
               </Link>
               :
@@ -161,6 +144,7 @@ export default class extends Component {
             <Suggestions
               hiddeSuggestion={this.hiddeSuggestion}
               search={this.state.search}
+              refresh={this.props.refresh}
             />
           )}
         </div>

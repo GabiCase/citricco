@@ -12,11 +12,10 @@ class Suggestions extends Component {
         super()
         this.state = {
             products: '',
-            showSuggestion: false
+            showSuggestion: false,
         }
         this.productsService = new productsService()
     }
-
 
     componentDidMount = () => {
         this.loadProducts()
@@ -29,6 +28,12 @@ class Suggestions extends Component {
             .catch((err) => console.log("ERROR", err));
     }
 
+    componentDidUpdate = (prevState) => {
+        if (prevState.products !== this.state.products) {
+            this.loadProducts()
+        }
+    }
+
 
     render() {
 
@@ -39,7 +44,7 @@ class Suggestions extends Component {
             <>
                 <Container >
                     <Row>
-                        {suggFiltered.map(elm => <SuggestionCard onClick={() => this.props.hiddeSuggestion()} key={elm._id} {...elm} />)}
+                        {suggFiltered.map(elm => <SuggestionCard hiddeSuggestion={this.props.hiddeSuggestion} key={elm._id} {...elm} />)}
                     </Row>
                 </Container>
 

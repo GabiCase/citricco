@@ -35,6 +35,13 @@ class Category extends Component {
             .catch((err) => console.log("ERROR", err));
     };
 
+
+    componentDidUpdate = (prevState) => {
+        if (prevState.products !== this.state.products) {
+            this.loadProducts()
+        }
+    }
+
     handleModalNew = (showModalNew) => {
         this.setState({ showModalNew });
     };

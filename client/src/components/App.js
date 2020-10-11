@@ -1,0 +1,220 @@
+import React, { Component } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import "./App.css";
+
+import Navigation from "./layout/navbar/Navbar";
+import Footer from "./layout/footer/Footer";
+
+import Index from "./pages/index/Index";
+
+import ProductsList from "./pages/productList/ProductList";
+import ProductDetails from "./pages/productDetails/ProductDetails";
+import NewProduct from "./pages/newProduct/NewProduct";
+import Signup from "./pages/signup/Signup";
+import Login from "./pages/login/Login";
+import Profile from "./pages/profile/Profile";
+import Cart from "./layout/navbar/Cart";
+
+import authService from "./../service/auth.service";
+import productsService from './../service/products.service'
+
+// import PendantList from "./pages/productList/PendantList";
+// import HoopList from "./pages/productList/HoopList";
+import Category from './pages/productList/Category'
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedInUser: undefined,
+      cart: [],
+      total: 0,
+      quantity: 0,
+      products: undefined,
+      key: ""
+    };
+    this.authService = new authService();
+    this.productsService = new productsService
+  }
+
+  setTheUser = (user) =>
+    this.setState({ loggedInUser: user }, () =>
+      console.log("El usuario es", this.state.loggedInUser)
+    );
+
+  componentDidMount = () => {
+    this.authService
+      .loggedin()
+      .then((res) => this.setState({ loggedInUser: res.data }))
+      .catch((err) => this.setState({ loggedInUser: null }));
+  };
+
+  addToCart = (product) => {
+
+    const cartCopy = [...this.state.cart];
+    let itemInCart = cartCopy.find((elm) => elm.name === product.name);
+
+    if (itemInCart) {
+      itemInCart.quantity++;
+    } else {
+      itemInCart = {
+        ...product,
+        quantity: 1,
+      };
+      cartCopy.push(itemInCart);
+    }
+    this.setState({ cart: cartCopy });
+  };
+
+  removeFromCart = (productToRemove) => {
+    const cartUpdated = this.state.cart.filter(
+      (product) => product !== productToRemove
+    );
+    this.setState({ cart: cartUpdated });
+    //console.log('hola')
+    //console.log('soy el cartupdated', this.state.cart)
+    this.calculateTotal(cartUpdated);
+  };
+
+  decrease = (product) => {
+    const decreaseCart = [...this.state.cart];
+    let itemDecrease = decreaseCart.find((elm) => elm._id === product._id);
+    //console.log(product)
+    if (itemDecrease.quantity > 0) {
+      itemDecrease.quantity--;
+    } else {
+      itemDecrease.quantity = 0;
+    }
+    this.setState({ cart: decreaseCart });
+    this.calculateTotal(decreaseCart);
+  };
+
+  increase = (product) => {
+    const increaseCart = [...this.state.cart];
+    let itemIncrease = increaseCart.find((elm) => elm._id === product._id);
+    itemIncrease && itemIncrease.quantity >= 0
+      ? itemIncrease.quantity++
+      : (itemIncrease.quantity = 0);
+    // if (itemIncrease.quantity >= 0) {
+    //   itemIncrease.quantity++;
+    //   console.log('SOY LA CANTIDAD DEL INCREASE', itemIncrease.quantity)
+    // } else {
+    //   itemIncrease.quantity = 0
+    // }
+    this.setState({ cart: increaseCart });
+    this.calculateTotal(increaseCart);
+  };
+
+  calculateTotal = (cart) => {
+    let totalSum = 0;
+    cart.map((elm) => (totalSum += elm.price * elm.quantity));
+    const roundTot = totalSum.toFixed(2)
+    this.setState({ total: roundTot });
+  };
+
+  componentDidMount = () => {
+    this.loadProducts();
+  };
+  loadProducts = () => {
+    console.log("estoy refrescando en aaaaappp");
+    this.productsService
+      .getAllProducts()
+      .then((response) => this.setState({ products: response.data }))
+      .catch((err) => console.log("ERROR", err));
+  };
+
+  refresh = (category) => {
+    this.setState({ key: category })
+    console.log('STATE KEY', this.state)
+  }
+
+  render() {
+    console.log('PROPS de app', this.props)
+    return (
+      <>
+        <Navigation
+          {...this.props}
+          cart={this.state.cart}
+          cartChanged={this.cartChanged}
+          loggedInUser={this.state.loggedInUser}
+          refresh={this.refresh}
+        />
+        <Switch>
+          <Route path="/" exact render={() => <Index />} />
+          <Route
+            path="/products/all"
+            render={() => (
+              <ProductsList
+                addToCart={this.addToCart}
+                loggedInUser={this.state.loggedInUser}
+              />
+            )}
+          />
+
+          <Route path="/products/category/:category"
+            render={(props) => <Category {...props} />}
+
+          />
+
+          <Route
+            path="/products/details/:product_id"
+            render={(props) => (
+              <ProductDetails
+                {...props}
+                loggedInUser={this.state.loggedInUser}
+                quantity={this.state.quantity}
+                addToCart={this.addToCart}
+                decrease={this.decrease}
+                increase={this.increase}
+              />
+            )}
+          />
+          <Route
+            path="/products/newProduct"
+            render={(props) => <NewProduct {...props} />}
+          />
+          <Route
+            path="/account/signup"
+            render={(props) => (
+              <Signup setTheUser={this.setTheUser} {...props} />
+            )}
+          />
+          <Route
+            path="/account/login"
+            render={(props) => (
+              <Login setTheUser={this.setTheUser} {...props} />
+            )}
+          />
+          <Route
+            path="/account/profile"
+            render={(props) =>
+              this.state.loggedInUser ? (
+                <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} />
+              ) : (
+                  <Redirect to="/account/login" />
+                )
+            }
+          />
+          <Route
+            path="/cart"
+            render={() => (
+              <Cart
+                cart={this.state.cart}
+                total={this.state.total}
+                addToCart={this.addToCart}
+                removeFromCart={this.removeFromCart}
+                calculateTotal={this.calculateTotal}
+                decrease={this.decrease}
+                increase={this.increase}
+              />
+            )}
+          />
+        </Switch>
+
+        <Footer />
+      </>
+    );
+  }
+}
+
+export default App;

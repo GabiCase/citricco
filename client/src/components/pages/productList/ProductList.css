@@ -1,0 +1,54 @@
+.container {
+    margin-bottom: 300px;
+}
+
+h1 {
+    margin: 30px 0;
+}
+
+.card {
+    margin-bottom: 20px;
+    ;
+}
+
+.card-list img {
+    object-fit: cover;
+    height: 210px;
+    width: 210px;
+}
+
+
+
+.details {
+    margin-top: 50px;
+}
+
+.details .row {
+    justify-content: center;
+}
+
+.details img {
+    width: 100%;
+
+}
+
+.card-component {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-component img {
+    width: 25px;
+    height: 25px;
+}
+
+.card-list.card {
+    border: 0;
+    border-radius: 0;
+}
+
+.card-img-top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+

@@ -56,7 +56,7 @@ class ProductCard extends Component {
           <Card.Img
             className="300product"
             variant="top"
-            src={this.props.image}
+            src={this.props.image[0]}
           />
           <Card.Body>
             <div className="card-component">

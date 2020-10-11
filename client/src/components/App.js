@@ -18,8 +18,6 @@ import Cart from "./layout/navbar/Cart";
 import authService from "./../service/auth.service";
 import productsService from './../service/products.service'
 
-// import PendantList from "./pages/productList/PendantList";
-// import HoopList from "./pages/productList/HoopList";
 import Category from './pages/productList/Category'
 
 class App extends Component {
@@ -31,7 +29,7 @@ class App extends Component {
       total: 0,
       quantity: 0,
       products: undefined,
-      key: ""
+      key: "",
     };
     this.authService = new authService();
     this.productsService = new productsService
@@ -71,15 +69,13 @@ class App extends Component {
       (product) => product !== productToRemove
     );
     this.setState({ cart: cartUpdated });
-    //console.log('hola')
-    //console.log('soy el cartupdated', this.state.cart)
     this.calculateTotal(cartUpdated);
   };
 
   decrease = (product) => {
     const decreaseCart = [...this.state.cart];
     let itemDecrease = decreaseCart.find((elm) => elm._id === product._id);
-    //console.log(product)
+
     if (itemDecrease.quantity > 0) {
       itemDecrease.quantity--;
     } else {
@@ -92,15 +88,15 @@ class App extends Component {
   increase = (product) => {
     const increaseCart = [...this.state.cart];
     let itemIncrease = increaseCart.find((elm) => elm._id === product._id);
-    itemIncrease && itemIncrease.quantity >= 0
-      ? itemIncrease.quantity++
-      : (itemIncrease.quantity = 0);
-    // if (itemIncrease.quantity >= 0) {
-    //   itemIncrease.quantity++;
-    //   console.log('SOY LA CANTIDAD DEL INCREASE', itemIncrease.quantity)
-    // } else {
-    //   itemIncrease.quantity = 0
-    // }
+    // itemIncrease && itemIncrease.quantity >= 0
+    //   ? itemIncrease.quantity++
+    //   : (itemIncrease.quantity = 0);
+    if (itemIncrease.quantity >= 0) {
+      itemIncrease.quantity++;
+      console.log('SOY LA CANTIDAD DEL INCREASE', itemIncrease.quantity)
+    } else {
+      itemIncrease.quantity = 0
+    }
     this.setState({ cart: increaseCart });
     this.calculateTotal(increaseCart);
   };
@@ -123,10 +119,6 @@ class App extends Component {
       .catch((err) => console.log("ERROR", err));
   };
 
-  refresh = (category) => {
-    this.setState({ key: category })
-    console.log('STATE KEY', this.state)
-  }
 
   render() {
     console.log('PROPS de app', this.props)
@@ -137,7 +129,7 @@ class App extends Component {
           cart={this.state.cart}
           cartChanged={this.cartChanged}
           loggedInUser={this.state.loggedInUser}
-          refresh={this.refresh}
+
         />
         <Switch>
           <Route path="/" exact render={() => <Index />} />
@@ -152,7 +144,10 @@ class App extends Component {
           />
 
           <Route path="/products/category/:category"
-            render={(props) => <Category {...props} />}
+            render={(props) => <Category
+              {...props}
+              addToCart={this.addToCart}
+            />}
 
           />
 

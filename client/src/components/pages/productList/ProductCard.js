@@ -65,9 +65,14 @@ class ProductCard extends Component {
                 this.props.loggedInUser.fav.includes(this.props._id) ? (
                   <img onClick={this.removeFromFav} src={fav} />
                 ) : (
+
                     <img onClick={this.addToFav} src={unfav} />
                   )
               ) : null}
+
+
+             
+
             </div>
 
             <Card.Title>{this.props.price}€</Card.Title>

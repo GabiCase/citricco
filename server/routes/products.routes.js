@@ -48,9 +48,9 @@ router.put("/editProduct/:product_id", (req, res) => {
 
 router.put("/fav/:user_id", (req, res) => {
   console.log("user id de fav", req.params.user_id);
-  console.log("product id de fav", req.body);
+  console.log("product id de fav", req.body.fav);
   User.findByIdAndUpdate(req.params.user_id, {
-    $push: { fav: req.body },
+    $push: { fav: req.body.fav },
   })
     .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err));
@@ -60,28 +60,30 @@ router.put("/unfav/:user_id", (req, res) => {
   console.log("user id de unfav", req.params.user_id);
   console.log("product id de unfav", req.body);
   User.findByIdAndUpdate(req.params.user_id, {
-    $pull: { fav: req.body },
+    $pull: { fav: req.body.fav },
   })
     .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err));
 });
 
 router.get("/category/:cat_name", (req, res) => {
-  console.log(req.params.cat_name)
+  console.log(req.params.cat_name);
   Product.find({ category: req.params.cat_name })
     .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err));
 });
 
 router.put("/setAddress/:user_id", (req, res) => {
+  const { name, lastname, city, postal_code, street, num } = req.body;
 
-  const { name, lastname, city, postal_code, street, num } = req.body
-
-  User
-    .findByIdAndUpdate(req.params.user_id, { name, lastname, city, postal_code, street, num }, { new: true })
+  User.findByIdAndUpdate(
+    req.params.user_id,
+    { name, lastname, city, postal_code, street, num },
+    { new: true }
+  )
     .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err));
-})
+});
 
 // router.put("/wishlist/:user_id", (req, res) => {
 //   const user_id = req.params.user_id;

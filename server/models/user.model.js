@@ -16,10 +16,7 @@ const userSchema = new Schema(
       type: String,
       enum: ["customer", "admin"],
     },
-    fav: {
-      type: [Schema.Types.ObjectId],
-      rel: "product",
-    },
+    fav: { type: [Schema.Types.ObjectId], rel: "product" },
     name: {
       type: String,
     },
@@ -30,15 +27,14 @@ const userSchema = new Schema(
       type: String,
     },
     postal_code: {
-      type: Number
+      type: Number,
     },
     street: {
-      type: String
+      type: String,
     },
     num: {
-      type: String
-    }
-
+      type: String,
+    },
   },
   {
     timestamps: true,

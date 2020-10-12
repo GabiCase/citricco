@@ -11,38 +11,36 @@ class ProductCard extends Component {
   constructor(props) {
     super();
     this.state = {
-      //favImg: false,
+      favImg: false,
     };
 
     this.productsService = new productsService();
   }
 
-  // toggleFav = () => {
-  //   console.log("estado de la imagen", this.state.favImg);
-  //   this.setState({ favImg: !this.state.favImg });
-  //   console.log("estado de la imagen", this.state.favImg);
-  // };
+  toggleFav = () => {
+    console.log("estado de la imagen", this.state.favImg);
+    this.setState({ favImg: !this.state.favImg });
+    console.log("estado de la imagen", this.state.favImg);
+  };
 
   addToFav = () => {
-    // this.toggleFav();
+    this.toggleFav();
 
     const productId = this.props._id;
     const userId = this.props.loggedInUser._id;
 
     this.productsService
       .fav(userId, { fav: productId })
-      .then((res) => this.props.refreshList())
+      .then(() => this.props.refreshList())
       .catch((err) => console.log(err));
   };
 
   removeFromFav = () => {
+    this.toggleFav();
+
     const productId = this.props._id;
     const userId = this.props.loggedInUser._id;
 
-    console.log("id del producto remove", productId);
-    console.log("id user de cuando das a remove ", userId);
-
-    // this.toggleFav();
     this.productsService
       .unfav(userId, { fav: productId })
       .then(() => this.props.refreshList())
@@ -61,7 +59,17 @@ class ProductCard extends Component {
           <Card.Body>
             <div className="card-component">
               <Card.Title>{this.props.name}</Card.Title>
-              {/* {this.props.loggedInUser.fav.includes(this.props._id) ? (
+
+              {this.props.loggedInUser ? (
+                this.props.loggedInUser.fav.includes(this.props._id) ? (
+                  <img onClick={this.removeFromFav} src={fav} />
+                ) : (
+                  <img onClick={this.addToFav} src={unfav} />
+                )
+              ) : null}
+
+              {/* {this.props.loggedInUser &&
+              this.props.loggedInUser.fav.includes(this.props._id) ? (
                 <img onClick={this.removeFromFav} src={fav} />
               ) : (
                 <img onClick={this.addToFav} src={unfav} />

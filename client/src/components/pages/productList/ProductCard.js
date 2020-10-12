@@ -48,13 +48,14 @@ class ProductCard extends Component {
   };
 
   render() {
+    console.log('QUE LLEG AQUI', this.props)
     return (
       <Col sm={12} md={4} lg={3}>
         <Card className="card-list">
           <Card.Img
             className="300product"
             variant="top"
-            src={this.props.image[0]}
+            src={this.props.imageUrl[0]}
           />
           <Card.Body>
             <div className="card-component">
@@ -64,16 +65,9 @@ class ProductCard extends Component {
                 this.props.loggedInUser.fav.includes(this.props._id) ? (
                   <img onClick={this.removeFromFav} src={fav} />
                 ) : (
-                  <img onClick={this.addToFav} src={unfav} />
-                )
+                    <img onClick={this.addToFav} src={unfav} />
+                  )
               ) : null}
-
-              {/* {this.props.loggedInUser &&
-              this.props.loggedInUser.fav.includes(this.props._id) ? (
-                <img onClick={this.removeFromFav} src={fav} />
-              ) : (
-                <img onClick={this.addToFav} src={unfav} />
-              )} */}
             </div>
 
             <Card.Title>{this.props.price}€</Card.Title>

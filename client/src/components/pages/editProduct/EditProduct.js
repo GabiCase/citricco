@@ -4,18 +4,26 @@ import { Button, Form } from "react-bootstrap";
 import "./EditProduct.css";
 
 import productService from "./../../../service/products.service";
+import fileService from "./../../../service/files.service";
+import Spinner from './../../shared/spinner/Spinner'
+
 
 class EditProduct extends Component {
   constructor(props) {
     super();
     this.state = {
-      name: props.product.name,
-      description: props.product.description,
-      price: props.product.price,
-      category: props.product.category,
-      image: props.product.image,
+      product: {
+        name: props.product.name,
+        description: props.product.description,
+        price: props.product.price,
+        category: props.product.category,
+        imageUrl: "",
+      },
+      uploadingImage: false
     };
     this.productService = new productService();
+    this.fileService = new fileService();
+
   }
 
   handleInputChange = (e) => {
@@ -35,7 +43,23 @@ class EditProduct extends Component {
       .catch((err) => console.log("Error", { err }));
   };
 
+  handleImageUpload = e => {
+    this.setState({ uploadingImage: true })
+
+    const uploadData = new FormData()
+    uploadData.append('imageUrl', e.target.files)
+
+    this.fileService
+      .uploadImage(uploadData)
+      .then((response) => this.setState({
+        product: { ...this.state.product, imageUrl: response.data.secure_url },
+        uploadingImage: false
+      }))
+      .catch((err) => console.log("Error", err));
+  }
+
   render() {
+    console.log('PROPS EN EDIT')
     return (
       <>
         <div className="form-newProduct">
@@ -44,7 +68,7 @@ class EditProduct extends Component {
             <Form.Group>
               <Form.Label>Name</Form.Label>
               <Form.Control
-                value={this.state.name}
+                value={this.state.product.name}
                 name="name"
                 onChange={this.handleInputChange}
                 type="text"
@@ -54,7 +78,7 @@ class EditProduct extends Component {
             <Form.Group>
               <Form.Label>Price</Form.Label>
               <Form.Control
-                value={this.state.price}
+                value={this.state.product.price}
                 name="price"
                 onChange={this.handleInputChange}
                 type="text"
@@ -62,19 +86,19 @@ class EditProduct extends Component {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Image URL</Form.Label>
+              <Form.Label>Image{this.state.uploadingImage && <Spinner />}</Form.Label>
               <Form.Control
-                value={this.state.image}
-                name="image"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Give your product an image"
+                multiple
+                name="imageUrl"
+                onChange={this.handleImageUpload}
+                type="file"
+
               />
             </Form.Group>
             <Form.Group>
               <Form.Label>Description</Form.Label>
               <Form.Control
-                value={this.state.description}
+                value={this.state.product.description}
                 name="description"
                 onChange={this.handleInputChange}
                 as="textarea"
@@ -84,7 +108,7 @@ class EditProduct extends Component {
             <Form.Group>
               <Form.Label>Category</Form.Label>
               <Form.Control
-                value={this.state.category}
+                value={this.state.product.category}
                 name="category"
                 onChange={this.handleInputChange}
                 as="select"

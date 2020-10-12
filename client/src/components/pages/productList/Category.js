@@ -25,6 +25,7 @@ class Category extends Component {
         this.productsService = new productsService();
     }
 
+
     componentDidMount = () => this.loadProducts()
 
     loadProducts = () => {
@@ -35,9 +36,12 @@ class Category extends Component {
             .catch((err) => console.log("ERROR", err));
     };
 
-
     componentDidUpdate = (prevState) => {
-        if (prevState.products !== this.state.products) {
+
+        console.log('PREVSTATE', prevState.match.params.category)
+        console.log('props', this.props.match.params.category)
+        if (prevState.match.params.category === !this.props.match.params.category) {
+
             this.loadProducts()
         }
     }
@@ -47,7 +51,8 @@ class Category extends Component {
     };
 
     render() {
-
+        console.log('PROPS', this.props)
+        console.log('STATE', this.state)
         return (
 
             <>

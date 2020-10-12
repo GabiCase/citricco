@@ -1,43 +1,48 @@
 import React, { Component } from "react";
-import { Button } from 'react-bootstrap/Button'
-
-
+import { Button } from "react-bootstrap";
 class CounterDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: props.quantity
+            counterQuantity: 0,
         };
     }
-
-
-    increment = () => {
-        this.setState({
-            count: this.state.count + 1
-        });
+    refreshIncrement = () => {
+        this.setState({ counterQuantity: this.props.quantity });
+        this.props.counterIncrement();
     };
-
-    decrement = () => {
-        this.setState({ count: this.state.count - 1 });
+    refreshDecrement = () => {
+        this.setState({ counterQuantity: this.props.quantity });
+        this.props.counterDecrement();
     };
-
-    reset = () => {
-        this.setState({
-            count: 0
-        });
+    refreshReset = () => {
+        this.setState({ counterQuantity: this.props.quantity });
+        this.props.counterIncrement();
     };
-
     render() {
-        console.log('props de counter small', this.props)
         return (
-
             <div>
-                <button className='inc btn btn-light' onClick={this.increment}>+</button>
-                <button className='dec btn btn-light' onClick={this.decrement}>-</button>
-                <button className='reset btn btn-light' onClick={this.reset}>Reset</button>
-                <p>{this.state.count}</p>
+                <Button
+                    className="inc btn btn-light"
+                    onClick={() => this.refreshIncrement()}
+                >
+                    +
+        </Button>
+                <Button
+                    className="dec btn btn-light"
+                    onClick={() => this.refreshDecrement()}
+                >
+                    -
+        </Button>
+                <Button
+                    className="reset btn btn-light"
+                    onClick={() => this.refreshReset()}
+                >
+                    Reset
+        </Button>
+                <p>{this.state.counterQuantity}</p>
             </div>
         );
     }
-};
-export default CounterDetails
+}
+export default CounterDetails;

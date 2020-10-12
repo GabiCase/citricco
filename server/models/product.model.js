@@ -20,7 +20,7 @@ const productSchema = new Schema(
       type: Number,
       default: 0,
     },
-    image: {
+    imageUrl: {
       type: [String],
       default: "",
     },

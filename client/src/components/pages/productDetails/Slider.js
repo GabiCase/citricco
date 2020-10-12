@@ -14,7 +14,7 @@ export default class SimpleSlider extends Component {
         return (
             <div>
                 <Slider {...settings}>
-                    {this.props.img.map(elm =>
+                    {this.props.imageUrl.map(elm =>
                         <div className="sliderimg">
                             <img src={elm}></img>
                         </div>

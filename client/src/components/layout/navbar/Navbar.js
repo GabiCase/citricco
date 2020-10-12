@@ -6,10 +6,17 @@ import "./Navbar.css";
 import cart from "./images/cart.png";
 import search from "./images/search.png";
 import user from "./images/user.png";
-import { Navbar, Nav, Form, FormControl, NavDropdown, Button } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  NavDropdown,
+  Button,
+} from "react-bootstrap";
 
 import authService from "./../../../service/auth.service";
-import productsService from './../../../service/products.service'
+import productsService from "./../../../service/products.service";
 
 import Suggestions from "./Suggestions";
 import ProfileDrop from "./ProfileDrop";
@@ -22,19 +29,19 @@ export default class extends Component {
       search: "",
       showSuggestion: false,
       products: [],
-    }
+    };
     this.authService = new authService();
-    this.productsService = new productsService()
+    this.productsService = new productsService();
   }
 
   handleChange = (e) => {
     const quantity = [...this.state.cartQuantity];
     this.props.cartChanged(e.target.quantity);
-  }
+  };
 
   getCartTotal = () => {
     return this.props.cart.reduce((sum, { quantity }) => sum + quantity, 0);
-  }
+  };
 
   handleInputChange = (e) => {
     let { name } = e.target;
@@ -46,9 +53,8 @@ export default class extends Component {
     this.setState({ showSuggestion: false });
   };
 
-
   render() {
-    console.log('props de navabr', this.props)
+    console.log("props de navabr", this.props);
     return (
       <>
         <Navbar bg="light" expand="lg" onClick={() => this.hiddeSuggestion()}>
@@ -70,7 +76,10 @@ export default class extends Component {
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
-                  <Link to="/products/category/pendants" className="dropdown-item">
+                  <Link
+                    to="/products/category/pendants"
+                    className="dropdown-item"
+                  >
                     Pendants
                   </Link>
                 </NavDropdown.Item>
@@ -95,11 +104,8 @@ export default class extends Component {
                 onChange={this.handleInputChange}
               />
             </Form>
-            <Button className="nav-link btn-image">
-              <img className="cart-img" src={search} />
-            </Button>
 
-            {this.props.loggedInUser ?
+            {this.props.loggedInUser ? (
               <Link className="nav-link" to="/account/profile">
                 <NavDropdown
                   className="user-logo transparent"
@@ -109,28 +115,27 @@ export default class extends Component {
                   <NavDropdown.Item>
                     <Link className="dropdown-item" to="/account/profile">
                       My profile
-                      </Link>
+                    </Link>
                   </NavDropdown.Item>
 
                   <NavDropdown.Item>
                     <Link className="dropdown-item" to="account/orderhistory">
                       Order history
-                      </Link>
+                    </Link>
                   </NavDropdown.Item>
 
                   <NavDropdown.Item>
                     <Link className="dropdown-item" to="account/whislist">
                       My whislist
-                      </Link>
+                    </Link>
                   </NavDropdown.Item>
-
                 </NavDropdown>
               </Link>
-              :
+            ) : (
               <Link className="nav-link" to="/account/login">
                 <img className="cart-img" src={user} />
               </Link>
-            }
+            )}
 
             <Link className="nav-link" to="/cart">
               <img className="cart-img" src={cart} />

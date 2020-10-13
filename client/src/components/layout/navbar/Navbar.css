@@ -6,8 +6,9 @@
     width: 100px;
 }
 
-.container.bottom-20 {
-    margin-bottom: 20px;
+
+.navbar.container {
+    margin-bottom: 40px;
 }
 
 .btn-image {
@@ -22,8 +23,8 @@
 }
 
 .suggestions-box {
-padding: 80px;
-justify-content: space-between;
+    padding: 80px;
+    justify-content: space-between;
 }
 
 .user-logo {
@@ -31,15 +32,37 @@ justify-content: space-between;
     width: 30px;
     height: 30px;
     background-size: cover;
-    
+
 }
+
 .user-logo.transparent a {
     color: transparent;
 }
+
 .user-logo.transparent a.dropdown-item {
     color: black;
 }
+
 .earrings {
     color: black;
 }
 
+.card-suggestion {
+    margin-top: 30px;
+    color: black;
+}
+
+p.name {
+    margin-top: 20px;
+    margin-bottom: 3px;
+}
+
+.container.suggestions-box {
+
+    margin-bottom: 20px;
+    padding: 50px;
+}
+
+.suggestions-box .border-bottom {
+    border-bottom: 1px solid #80808029;
+}

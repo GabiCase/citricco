@@ -1,23 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import "./Navbar.css";
-
 import cart from "./images/cart.png";
 import user from "./images/user.png";
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  NavDropdown,
-} from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
 
 import authService from "./../../../service/auth.service";
 import productsService from "./../../../service/products.service";
 
 import Suggestions from "./Suggestions";
 
+import "./Navbar.css";
 export default class extends Component {
   constructor(props) {
     super();
@@ -128,27 +121,25 @@ export default class extends Component {
                 </NavDropdown>
               </Link>
             ) : (
-                <Link className="nav-link" to="/account/login">
-                  <img className="cart-img" src={user} alt={'user-logo'} />
-                </Link>
-              )}
+              <Link className="nav-link" to="/account/login">
+                <img className="cart-img" src={user} alt={"user-logo"} />
+              </Link>
+            )}
 
             <Link className="nav-link" to="/cart">
-              <img className="cart-img" src={cart} alt={'cart-logo'} />
+              <img className="cart-img" src={cart} alt={"cart-logo"} />
               {this.getCartTotal()}
             </Link>
           </Navbar.Collapse>
         </Navbar>
 
-        <div>
-          {this.state.showSuggestion && (
-            <Suggestions
-              hiddeSuggestion={this.hiddeSuggestion}
-              search={this.state.search}
-              refresh={this.props.refresh}
-            />
-          )}
-        </div>
+        {this.state.showSuggestion && (
+          <Suggestions
+            hiddeSuggestion={this.hiddeSuggestion}
+            search={this.state.search}
+            refresh={this.props.refresh}
+          />
+        )}
       </>
     );
   }

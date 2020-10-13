@@ -32,7 +32,6 @@ class ProductsList extends Component {
     this.loadProducts();
   };
   loadProducts = () => {
-
     this.productsService
       .getAllProducts()
       .then((response) => this.setState({ products: response.data }))
@@ -44,16 +43,20 @@ class ProductsList extends Component {
   };
 
   sortByPrice = () => {
-    const sortedProducts = this.state.products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+    const sortedProducts = this.state.products.sort(
+      (a, b) => parseFloat(a.price) - parseFloat(b.price)
+    );
 
-    this.setState({ products: sortedProducts })
-  }
+    this.setState({ products: sortedProducts });
+  };
 
   sortByPriceUp = () => {
-    const sortedProducts = this.state.products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+    const sortedProducts = this.state.products.sort(
+      (a, b) => parseFloat(b.price) - parseFloat(a.price)
+    );
 
-    this.setState({ products: sortedProducts })
-  }
+    this.setState({ products: sortedProducts });
+  };
   render() {
     return (
       <>
@@ -70,9 +73,12 @@ class ProductsList extends Component {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => this.sortByPrice()}>low to high</Dropdown.Item>
-                <Dropdown.Item onClick={() => this.sortByPriceUp()}>high to low</Dropdown.Item>
-
+                <Dropdown.Item onClick={() => this.sortByPrice()}>
+                  low to high
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => this.sortByPriceUp()}>
+                  high to low
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -91,12 +97,15 @@ class ProductsList extends Component {
                     increase={() => this.props.increase(elm)}
                     decrease={() => this.props.decrease(elm)}
                     refreshList={this.loadProducts}
-                    isFav={this.props.loggedInUser.fav.includes(elm._id)}
+                    isFav={
+                      this.props.loggedInUser &&
+                      this.props.loggedInUser.fav.includes(elm._id)
+                    }
                   />
                 ))
               ) : (
-                  <Spinner />
-                )}
+                <Spinner />
+              )}
             </Row>
           </main>
         </Container>

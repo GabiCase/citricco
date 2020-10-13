@@ -19,6 +19,7 @@ import authService from "./../service/auth.service";
 import productsService from './../service/products.service'
 
 import Category from './pages/productList/Category'
+import Wishlist from "./pages/profile/Wishlist";
 
 class App extends Component {
   constructor() {
@@ -214,6 +215,10 @@ class App extends Component {
                 )
             }
           />
+          <Route path="/wishlist"
+            render={() =>
+              <Wishlist userId={this.state.loggedInUser._id} />} />
+
           <Route
             path="/cart"
             render={() => (

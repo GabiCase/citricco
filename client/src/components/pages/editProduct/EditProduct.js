@@ -28,13 +28,13 @@ class EditProduct extends Component {
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ product: { ...this.state.product, [name]: value } })
   };
 
   handleFormSubmit = (e) => {
     e.preventDefault();
     this.productService
-      .editProduct(this.props.product._id, this.state)
+      .editProduct(this.props.product._id, this.state.product)
       .then(() => {
         this.props.closeModal();
         this.props.refreshList();
@@ -48,6 +48,7 @@ class EditProduct extends Component {
 
     const uploadData = new FormData()
     uploadData.append('imageUrl', e.target.files)
+
 
     this.fileService
       .uploadImage(uploadData)
@@ -88,6 +89,7 @@ class EditProduct extends Component {
               <Form.Label>Image{this.state.uploadingImage && <Spinner />}</Form.Label>
               <Form.Control
                 multiple
+                value={this.state.product.imageUrl}
                 name="imageUrl"
                 onChange={this.handleImageUpload}
                 type="file"

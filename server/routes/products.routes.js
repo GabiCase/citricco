@@ -83,6 +83,13 @@ router.put("/setAddress/:user_id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
+router.get("/getFavs/:user_id", (req, res) => {
+
+  User.findById(req.params.user_id)
+    .then((response) => res.json(response))
+    .catch((err) => res.status(500).json(err));
+});
+
 // router.put("/wishlist/:user_id", (req, res) => {
 //   const user_id = req.params.user_id;
 //   User.findByIdAndUpdate(

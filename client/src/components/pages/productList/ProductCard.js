@@ -12,12 +12,12 @@ class ProductCard extends Component {
     super();
     this.state = {
       favImg: false,
-    }
+    };
 
     this.productsService = new productsService();
   }
 
-  componentDidMount = () => this.setState({ favImg: this.props.isFav })
+  componentDidMount = () => this.setState({ favImg: this.props.isFav });
 
   toggleFav = () => {
     this.setState({ favImg: !this.state.favImg }, () => this.saveChanges());
@@ -40,23 +40,27 @@ class ProductCard extends Component {
     }
   };
 
-
   render() {
-    console.log('PROPS DE LOGEDIN USER FAV', this.props.loggedInUser)
+    console.log("PROPS DE LOGEDIN USER FAV", this.props.loggedInUser);
     return (
       <Col sm={12} md={4} lg={3}>
         <Card className="card-list">
           <Card.Img
             className="300product"
             variant="top"
-            src={this.props.imageUrl[0]} />
+            src={this.props.imageUrl[0]}
+          />
           <Card.Body>
             <div className="card-component">
               <Card.Title>{this.props.name}</Card.Title>
 
-              {this.props.loggedInUser && <img onClick={this.toggleFav} src={this.state.favImg ? fav : unfav} alt={'white heart'} />}
-
-
+              {this.props.loggedInUser && (
+                <img
+                  onClick={() => this.toggleFav()}
+                  src={this.state.favImg ? fav : unfav}
+                  alt={"white heart"}
+                />
+              )}
             </div>
 
             <Card.Title>{this.props.price}€</Card.Title>

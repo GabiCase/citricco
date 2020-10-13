@@ -16,9 +16,9 @@ import Profile from "./pages/profile/Profile";
 import Cart from "./layout/navbar/Cart";
 
 import authService from "./../service/auth.service";
-import productsService from './../service/products.service'
+import productsService from "./../service/products.service";
 
-import Category from './pages/productList/Category'
+import Category from "./pages/productList/Category";
 import Wishlist from "./pages/profile/Wishlist";
 
 class App extends Component {
@@ -50,7 +50,6 @@ class App extends Component {
   };
 
   addToCart = (product) => {
-
     const cartCopy = [...this.state.cart];
     let itemInCart = cartCopy.find((elm) => elm.name === product.name);
 
@@ -67,7 +66,6 @@ class App extends Component {
   };
 
   addToCartDet = (product) => {
-
     const cartCopy = [...this.state.cart];
     let itemInCart = cartCopy.find((elm) => elm.name === product.name);
 
@@ -112,7 +110,7 @@ class App extends Component {
     if (itemIncrease.quantity >= 0) {
       itemIncrease.quantity++;
     } else {
-      itemIncrease.quantity = 0
+      itemIncrease.quantity = 0;
     }
     this.setState({ cart: increaseCart });
     this.calculateTotal(increaseCart);
@@ -121,7 +119,7 @@ class App extends Component {
   calculateTotal = (cart) => {
     let totalSum = 0;
     cart.map((elm) => (totalSum += elm.price * elm.quantity));
-    const roundTot = totalSum.toFixed(2)
+    const roundTot = totalSum.toFixed(2);
     this.setState({ total: roundTot });
   };
 
@@ -130,9 +128,10 @@ class App extends Component {
   };
 
   counterDecrement = () => {
-    this.state.quantity > 0 ? this.setState({ quantity: this.state.quantity - 1 }) : this.state.quantity = 0
+    this.state.quantity > 0
+      ? this.setState({ quantity: this.state.quantity - 1 })
+      : (this.state.quantity = 0);
   };
-
 
   componentDidMount = () => {
     this.loadProducts();
@@ -144,9 +143,7 @@ class App extends Component {
       .catch((err) => console.log("ERROR", err));
   };
 
-
   render() {
-
     return (
       <>
         <Navigation
@@ -154,7 +151,6 @@ class App extends Component {
           cart={this.state.cart}
           cartChanged={this.cartChanged}
           loggedInUser={this.state.loggedInUser}
-
         />
         <Switch>
           <Route path="/" exact render={() => <Index />} />
@@ -168,12 +164,11 @@ class App extends Component {
             )}
           />
 
-          <Route path="/products/category/:category"
-            render={(props) => <Category
-              {...props}
-              addToCart={this.addToCart}
-            />}
-
+          <Route
+            path="/products/category/:category"
+            render={(props) => (
+              <Category {...props} addToCart={this.addToCart} />
+            )}
           />
 
           <Route
@@ -209,15 +204,20 @@ class App extends Component {
             path="/account/profile"
             render={(props) =>
               this.state.loggedInUser ? (
-                <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} />
+                <Profile
+                  loggedInUser={this.state.loggedInUser}
+                  setTheUser={this.setTheUser}
+                  {...props}
+                />
               ) : (
-                  <Redirect to="/account/login" />
-                )
+                <Redirect to="/account/login" />
+              )
             }
           />
-          <Route path="/wishlist"
-            render={() =>
-              <Wishlist userId={this.state.loggedInUser._id} />} />
+          <Route
+            path="/wishlist"
+            render={() => <Wishlist userId={this.state.loggedInUser._id} />}
+          />
 
           <Route
             path="/cart"
@@ -230,6 +230,7 @@ class App extends Component {
                 calculateTotal={this.calculateTotal}
                 decrease={this.decrease}
                 increase={this.increase}
+                loggedInUser={this.state.loggedInUser}
               />
             )}
           />

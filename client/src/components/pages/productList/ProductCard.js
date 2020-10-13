@@ -17,13 +17,16 @@ class ProductCard extends Component {
     this.productsService = new productsService();
   }
 
+  componentDidMount = () => this.setState({ favImg: this.props.isFav })
+
   toggleFav = () => {
-    this.setState({ favImg: !this.state.favImg }, () => this.showChanges());
+    this.setState({ favImg: !this.state.favImg }, () => this.saveChanges());
   };
 
-  showChanges = () => {
+  saveChanges = () => {
     const productId = this.props._id;
     const userId = this.props.loggedInUser._id;
+
     if (this.state.favImg) {
       this.productsService
         .fav(userId, { fav: productId })
@@ -37,45 +40,6 @@ class ProductCard extends Component {
     }
   };
 
-  // activateFav = () => {
-  //   console.log('estoy en activateFav, mi estado es', this.state.favImg)
-  //   this.setState({ favImg: true }, () => this.addToFav());
-  //   console.log('estoy en activate fav mi estado ha cambiado a', this.state.favImg)
-  // };
-
-  // deactivateFav = () => {
-  //   console.log('estoy en deactivateFAv, mi estado es', this.state.favImg)
-  //   this.setState({ favImg: false }, () => this.removeFromFav());
-  //   console.log('estoy en deactivate fav mi estado ha cambiado a', this.state.favImg)
-  // };
-
-  // addToFav = () => {
-  //   console.log('he entrado en addToFav y el estado de la imagen es', this.state.favImg)
-  //   console.log('array de addfavs antes del servicio (PROPS)', this.props.loggedInUser.fav)
-  //   const productId = this.props._id;
-  //   const userId = this.props.loggedInUser._id;
-
-  //   this.productsService
-  //     .fav(userId, { fav: productId })
-  //     .then((response) => this.props.refreshList())
-  //     .catch((err) => console.log(err));
-  //   console.log('array de addfavs después del servicio (PROPS)', this.props.loggedInUser.fav)
-  // };
-
-  // removeFromFav = () => {
-
-  //   console.log('he entrado a remove y el estado de la imagen es', this.state.favImg)
-  //   console.log('array de remove favs antes del servicio (PROPS)', this.props.loggedInUser.fav)
-  //   const productId = this.props._id;
-  //   const userId = this.props.loggedInUser._id;
-
-  //   this.productsService
-  //     .unfav(userId, { fav: productId })
-  //     .then(() => this.props.refreshList())
-  //     .catch((err) => console.log(err));
-  //   console.log('array de removefavs después del servicio (PROPS)', this.props.loggedInUser.fav)
-
-  // };
 
   render() {
     console.log('PROPS DE LOGEDIN USER FAV', this.props.loggedInUser)
@@ -90,13 +54,7 @@ class ProductCard extends Component {
             <div className="card-component">
               <Card.Title>{this.props.name}</Card.Title>
 
-              {this.props.loggedInUser ? (
-                this.props.loggedInUser.fav.includes(this.props._id) | !this.state.favImg ? (
-                  <img onClick={this.toggleFav} src={fav} alt={'black heart'} />
-                ) : (
-                    <img onClick={this.toggleFav} src={unfav} alt={'white heart'} />
-                  )
-              ) : null}
+              {this.props.loggedInUser && <img onClick={this.toggleFav} src={this.state.favImg ? fav : unfav} alt={'white heart'} />}
 
 
             </div>

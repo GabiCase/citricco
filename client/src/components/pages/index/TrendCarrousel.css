@@ -1,3 +1,26 @@
-.slick-prev.slick-disabled:before {
+/* .slick-prev.slick-disabled:before {
     color: black;
+}
+.slick-next.slick-disabled:before {
+    color: black;
+    
+}  */
+
+.trending {
+    margin-top:80px
+
+}
+.trending button.slick-arrow.slick-next::before {
+    color: black;
+}
+
+.trending button.slick-arrow.slick-prev::before {
+    color: black;
+}
+
+.trending img {
+    height: 300px;
+    width: 80%;
+    object-fit: cover;
+   
 }

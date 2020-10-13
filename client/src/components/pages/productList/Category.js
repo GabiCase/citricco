@@ -24,14 +24,13 @@ class Category extends Component {
             .then((response) => this.setState({ products: response.data }))
             .catch((err) => console.log("ERROR", err));
     };
+
     componentDidUpdate = (prevState) => {
-
-
         if (prevState.match.params.category !== this.props.match.params.category) {
-
             this.loadProducts();
         }
     };
+
     handleModalNew = (showModalNew) => {
         this.setState({ showModalNew });
     };

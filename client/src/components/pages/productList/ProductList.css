@@ -13,8 +13,8 @@ h1 {
 
 .card-list img {
     object-fit: cover;
-    height: 210px;
-    width: 210px;
+    height: 260px;
+    width: 100%;
 }
 
 

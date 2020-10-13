@@ -91,6 +91,7 @@ class ProductsList extends Component {
                     increase={() => this.props.increase(elm)}
                     decrease={() => this.props.decrease(elm)}
                     refreshList={this.loadProducts}
+                    isFav={this.props.loggedInUser.fav.includes(elm._id)}
                   />
                 ))
               ) : (

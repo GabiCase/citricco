@@ -11,7 +11,7 @@ class Suggestions extends Component {
     constructor(props) {
         super()
         this.state = {
-            products: '',
+            products: [],
             showSuggestion: false,
         }
         this.productsService = new productsService()
@@ -28,11 +28,11 @@ class Suggestions extends Component {
             .catch((err) => console.log("ERROR", err));
     }
 
-    componentDidUpdate = (prevState) => {
-        if (prevState.products !== this.state.products) {
-            this.loadProducts()
-        }
-    }
+    // componentDidUpdate = (prevState) => {
+    //     if (prevState.products !== this.state.products) {
+    //         this.loadProducts()
+    //     }
+    // }
 
 
     render() {
@@ -44,7 +44,9 @@ class Suggestions extends Component {
             <>
                 <Container >
                     <Row>
+
                         {suggFiltered.map(elm => <SuggestionCard hiddeSuggestion={this.props.hiddeSuggestion} key={elm._id} {...elm} />)}
+
                     </Row>
                 </Container>
 

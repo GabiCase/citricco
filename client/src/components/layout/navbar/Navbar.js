@@ -47,7 +47,7 @@ export default class extends Component {
   };
 
   hiddeSuggestion = () => {
-    this.setState({ showSuggestion: false });
+    this.setState({ showSuggestion: false, search: "" });
   };
 
   render() {

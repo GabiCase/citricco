@@ -36,6 +36,13 @@ class ProductDetails extends Component {
       .then((res) => this.setState({ product: res.data }))
       .catch((err) => console.log(err));
   };
+  componentDidUpdate = (prevState) => {
+
+    if (prevState.match.params.product_id !== this.props.match.params.product_id) {
+
+      this.loadProducts();
+    }
+  };
 
 
 

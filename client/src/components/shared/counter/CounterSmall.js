@@ -11,6 +11,7 @@ const CounterDetails = ({ quantity, counterDecrement, counterIncrement }) => {
             >
                 +
         </Button>
+            <p>{quantity}</p>
             <Button
                 className="dec btn btn-light"
                 onClick={() => counterDecrement()}
@@ -23,7 +24,7 @@ const CounterDetails = ({ quantity, counterDecrement, counterIncrement }) => {
                 >
                     Reset
         </Button> */}
-            <p>{quantity}</p>
+
         </div>
     );
 }

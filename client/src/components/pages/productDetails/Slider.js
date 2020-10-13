@@ -11,6 +11,7 @@ export default class SimpleSlider extends Component {
             slidesToShow: 1,
             slidesToScroll: 1
         };
+        console.log('props en slider de details', this.props.imageUrl)
         return (
             <div>
                 <Slider {...settings}>

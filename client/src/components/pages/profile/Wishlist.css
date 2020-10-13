@@ -1,0 +1,115 @@
+
+.pict {
+  font-size: 1.1em;
+  position: fixed;
+  top: 60px;
+  right: 30px;
+  z-index: 99;
+  font-family: Raleway;
+  font-weight: 200;
+}
+
+
+a.add {
+  color: black;
+}
+a:visited {
+  font-family: Raleway;
+  font-weight: 200;
+  font-size: 1.1em;
+}
+.grid {
+  transition: all .5s ease-in-out;
+  column-gap: 30px;
+  column-fill: initial;
+  padding: 10vh 12vw 10vh 12vw;
+}
+.wrapper {
+  height: 400px;
+  text-align: center;
+}
+.wrapper h3 {
+  padding-top: 70px;
+  font-family: Raleway;
+  font-weight: 200;
+}
+.grid .brick {
+  margin-bottom: 30px;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+.grid .brick img {
+  transition: all .5s ease-in-out;
+  backface-visibility: hidden;
+}
+.grid .brick:hover img {
+  opacity: .65;
+}
+.grid .brick:hover p {
+  opacity: .40;
+}
+.grid .brick audio:hover {
+  opacity: .40;
+}
+a.delete-content {
+  font-family: raleway;
+  color: transparent;
+  text-align: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  cursor: crosshair;
+  z-index: 5;
+}
+a.delete-content:hover {
+  color: black;
+}
+.grid.bordered {
+  column-rule: 1px solid #eee;
+  column-gap: 50px;
+}
+.grid.bordered .brick {
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+.grid.gutterless {
+  column-gap: 0;
+}
+.grid.gutterless .brick {
+  margin-bottom: 0;
+}
+.grid.gutterless .brick p:hover {
+  cursor: crosshair;
+}
+.grid.gutterless .brick p {
+  padding: 4vw;
+  font-family: Raleway;
+  font-weight: 200;
+  font-size: 1.1em;
+  color: black;
+  margin-bottom: 0;
+}
+/* Masonry on tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .grid {
+    column-count: 2;
+  }
+}
+/* Masonry on big screens */
+@media only screen and (min-width: 1024px) {
+  .desc {
+    font-size: 1.25em;
+  }
+  .grid {
+    column-count: 3;
+  }
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}

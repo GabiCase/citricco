@@ -121,7 +121,7 @@ export default class extends Component {
                   </NavDropdown.Item>
 
                   <NavDropdown.Item>
-                    <Link className="dropdown-item" to="account/whislist">
+                    <Link className="dropdown-item" to="/wishlist">
                       My whislist
                     </Link>
                   </NavDropdown.Item>

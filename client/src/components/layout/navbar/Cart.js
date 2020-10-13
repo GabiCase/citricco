@@ -5,8 +5,6 @@ import CartCard from './CartCard'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-import productsService from './../../../service/products.service'
-
 class Cart extends Component {
     constructor(props) {
         super()
@@ -36,9 +34,8 @@ class Cart extends Component {
                                 </>
                             }
                             <p>Total: {this.props.total}€</p>
-                            {/* this.props.calculateTotal(this.state.cart) */}
-
                         </Col>
+
                         <Col sm={12} md={5}>
                             <h3> Datos de envío</h3>
                         </Col>

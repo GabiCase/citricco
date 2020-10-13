@@ -37,38 +37,50 @@ class Login extends Component {
     render() {
         return (
             <>
-                <div className="form-signup">
-                    <Row className="justify-content-center">
-                        <Col md={{ span: 4, offset: 3 }}>
-                            <h3>Login</h3>
-                            <Form onSubmit={this.handleFormSubmit}>
-                                <Form.Group>
-                                    <Form.Label>Username</Form.Label>
-                                    <Form.Control
-                                        value={this.state.username}
-                                        name="username"
-                                        onChange={this.handleInputChange}
-                                        type="text"
-                                        placeholder="Give your product a name"
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>password</Form.Label>
-                                    <Form.Control
-                                        value={this.state.password}
-                                        name="password"
-                                        onChange={this.handleInputChange}
-                                        type="password"
-                                        placeholder="Give your product a price"
-                                    />
-                                </Form.Group>
-                                <Button type="submit">Login</Button>
-                            </Form>
-                            <p>Don't have an account yet?<Link to="/account/signup">Signup</Link> </p>
+                <Container>
+                    <Row>
+                        <Col>
+                            <div className="form-signup">
+                                <Row className="justify-content-center">
+                                    <Col md={{ span: 4, offset: 3 }}>
+                                        <h3>Login</h3>
+                                        <Form onSubmit={this.handleFormSubmit}>
+                                            <Form.Group>
+                                                <Form.Label>Username</Form.Label>
+                                                <Form.Control
+                                                    value={this.state.username}
+                                                    name="username"
+                                                    onChange={this.handleInputChange}
+                                                    type="text"
+                                                    placeholder="Give your product a name"
+                                                />
+                                            </Form.Group>
+                                            <Form.Group>
+                                                <Form.Label>password</Form.Label>
+                                                <Form.Control
+                                                    value={this.state.password}
+                                                    name="password"
+                                                    onChange={this.handleInputChange}
+                                                    type="password"
+                                                    placeholder="Give your product a price"
+                                                />
+                                            </Form.Group>
+                                            <Button type="submit">Login</Button>
+                                        </Form>
+                                    </Col>
+                                </Row>
+                            </div>
+                        </Col>
+                        <Col>
+                            Don't have an account yet?<br></br>
+                            <Link to="/account/signup">REGISTER</Link>
                         </Col>
                     </Row>
+                </Container>
 
-                </div>
+
+
+
             </>
         );
     }

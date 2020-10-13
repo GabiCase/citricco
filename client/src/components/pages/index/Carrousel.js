@@ -1,8 +1,20 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import './Carrousel.css'
+
+import portada1 from './images/portada-1.jpg'
+import portada2 from './images/portada-2.jpg'
+import portada3 from './images/portada-3.jpg'
+import portada4 from './images/portada-4.jpg'
+import portada5 from './images/portada-5.jpg'
+import portada6 from './images/portada-6.jpg'
+
+
 
 export default class Carrrousel extends Component {
 
@@ -18,26 +30,26 @@ export default class Carrrousel extends Component {
             pauseOnHover: true
         };
         return (
-            <div>
+            <div className="carrousel">
 
                 <Slider {...settings}>
                     <div>
-                        <img src="https://decoideas-static.hola.com/srdpserendipia/wp-content/uploads/sites/20/2016/07/CALACATTA_C01-1024x505.jpg" />
+                        <img src={portada1} alt={'earrings'} />
                     </div>
                     <div>
-                        <img src="https://www.itrisa.com/IMAGES%20PIEDRA/MARMOLES/Marmoles%20Importacion/Verde%20Indio/Marmol%20Verde%20Indio%20Foto.jpg" />
+                        <img src={portada4} alt={'earrings'} />
                     </div>
                     <div>
-                        <img src="https://www.tinostone.com/wp-content/uploads/2019/09/tipos_vetas_marmol_piedra-848x450.jpg" />
+                        <img src={portada2} alt={'earrings'} />
                     </div>
                     <div>
-                        <img src="https://www.tinostone.com/wp-content/uploads/2019/01/Marmol_vetas_doradas-848x450.jpg" />
+                        <img src={portada5} alt={'earrings'} />
                     </div>
                     <div>
-                        <img src="https://dbdzm869oupei.cloudfront.net/img/sticker/preview/22021.png" />
+                        <img src={portada3} alt={'earrings'} />
                     </div>
                     <div>
-                        <img src="https://thumbs.dreamstime.com/b/textura-y-fondo-de-m%C3%A1rmol-blancos-78424807.jpg" />
+                        <img src={portada6} alt={'earrings'} />
                     </div>
                 </Slider>
             </div>

@@ -18,9 +18,7 @@ class ProductCard extends Component {
   }
 
   toggleFav = () => {
-    console.log("estado de la imagen", this.state.favImg);
     this.setState({ favImg: !this.state.favImg });
-    console.log("estado de la imagen", this.state.favImg);
   };
 
   addToFav = () => {
@@ -48,7 +46,6 @@ class ProductCard extends Component {
   };
 
   render() {
-    console.log('QUE LLEG AQUI', this.props)
     return (
       <Col sm={12} md={4} lg={3}>
         <Card className="card-list">
@@ -63,9 +60,9 @@ class ProductCard extends Component {
 
               {this.props.loggedInUser ? (
                 this.props.loggedInUser.fav.includes(this.props._id) ? (
-                  <img onClick={this.removeFromFav} src={fav} />
+                  <img onClick={this.removeFromFav} src={fav} alt={'fav'} />
                 ) : (
-                    <img onClick={this.addToFav} src={unfav} />
+                    <img onClick={this.addToFav} src={unfav} alt={'unfav'} />
                   )
               ) : null}
             </div>

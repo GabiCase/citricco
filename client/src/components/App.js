@@ -28,11 +28,12 @@ class App extends Component {
       cart: [],
       total: 0,
       quantity: 0,
+      quantityDetails: 0,
       products: undefined,
       key: "",
     };
     this.authService = new authService();
-    this.productsService = new productsService
+    this.productsService = new productsService();
   }
 
   setTheUser = (user) =>
@@ -64,8 +65,27 @@ class App extends Component {
     this.setState({ cart: cartCopy });
   };
 
+  addToCartDet = (product) => {
+
+    const cartCopy = [...this.state.cart];
+    let itemInCart = cartCopy.find((elm) => elm.name === product.name);
+
+    if (itemInCart) {
+      itemInCart.quantity = itemInCart.quantity + this.state.quantity;
+    } else {
+      itemInCart = {
+        ...product,
+        quantity: this.state.quantity,
+      };
+
+      cartCopy.push(itemInCart);
+    }
+    this.setState({ cart: cartCopy });
+  };
+
   removeFromCart = (productToRemove) => {
-    const cartUpdated = this.state.cart.filter(
+    const removeCopy = [...this.state.cart];
+    const cartUpdated = removeCopy.filter(
       (product) => product !== productToRemove
     );
     this.setState({ cart: cartUpdated });
@@ -88,12 +108,8 @@ class App extends Component {
   increase = (product) => {
     const increaseCart = [...this.state.cart];
     let itemIncrease = increaseCart.find((elm) => elm._id === product._id);
-    // itemIncrease && itemIncrease.quantity >= 0
-    //   ? itemIncrease.quantity++
-    //   : (itemIncrease.quantity = 0);
     if (itemIncrease.quantity >= 0) {
       itemIncrease.quantity++;
-      console.log('SOY LA CANTIDAD DEL INCREASE', itemIncrease.quantity)
     } else {
       itemIncrease.quantity = 0
     }
@@ -108,11 +124,19 @@ class App extends Component {
     this.setState({ total: roundTot });
   };
 
+  counterIncrement = () => {
+    this.setState({ quantity: this.state.quantity + 1 });
+  };
+
+  counterDecrement = () => {
+    this.state.quantity > 0 ? this.setState({ quantity: this.state.quantity - 1 }) : this.state.quantity = 0
+  };
+
+
   componentDidMount = () => {
     this.loadProducts();
   };
   loadProducts = () => {
-    console.log("estoy refrescando en aaaaappp");
     this.productsService
       .getAllProducts()
       .then((response) => this.setState({ products: response.data }))
@@ -121,7 +145,7 @@ class App extends Component {
 
 
   render() {
-    console.log('PROPS de app', this.props)
+
     return (
       <>
         <Navigation
@@ -158,9 +182,9 @@ class App extends Component {
                 {...props}
                 loggedInUser={this.state.loggedInUser}
                 quantity={this.state.quantity}
-                addToCart={this.addToCart}
-                decrease={this.decrease}
-                increase={this.increase}
+                addToCartDet={this.addToCartDet}
+                counterIncrement={this.counterIncrement}
+                counterDecrement={this.counterDecrement}
               />
             )}
           />

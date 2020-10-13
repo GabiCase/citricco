@@ -36,7 +36,7 @@ router.post("/newProduct", (req, res) => {
 });
 
 router.put("/editProduct/:product_id", (req, res) => {
-  console.log(req.params.product_id);
+
   if (!mongoose.Types.ObjectId.isValid(req.params.product_id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
@@ -47,8 +47,7 @@ router.put("/editProduct/:product_id", (req, res) => {
 });
 
 router.put("/fav/:user_id", (req, res) => {
-  console.log("user id de fav", req.params.user_id);
-  console.log("product id de fav", req.body.fav);
+
   User.findByIdAndUpdate(req.params.user_id, {
     $push: { fav: req.body.fav },
   })
@@ -57,8 +56,7 @@ router.put("/fav/:user_id", (req, res) => {
 });
 
 router.put("/unfav/:user_id", (req, res) => {
-  console.log("user id de unfav", req.params.user_id);
-  console.log("product id de unfav", req.body);
+
   User.findByIdAndUpdate(req.params.user_id, {
     $pull: { fav: req.body.fav },
   })
@@ -67,7 +65,7 @@ router.put("/unfav/:user_id", (req, res) => {
 });
 
 router.get("/category/:cat_name", (req, res) => {
-  console.log(req.params.cat_name);
+
   Product.find({ category: req.params.cat_name })
     .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err));

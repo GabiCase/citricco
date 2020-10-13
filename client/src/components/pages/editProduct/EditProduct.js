@@ -59,7 +59,6 @@ class EditProduct extends Component {
   }
 
   render() {
-    console.log('PROPS EN EDIT')
     return (
       <>
         <div className="form-newProduct">

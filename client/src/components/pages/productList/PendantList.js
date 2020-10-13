@@ -28,7 +28,6 @@ class PendantList extends Component {
   }
 
   loadProducts = () => {
-    console.log('PROPS DE PENDANTS', this.props)
     this.productsService
       .getCategory(this.props.match.params.category)
       .then((response) => this.setState({ products: response.data }))

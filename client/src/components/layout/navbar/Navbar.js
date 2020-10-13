@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 import cart from "./images/cart.png";
-import search from "./images/search.png";
 import user from "./images/user.png";
 import {
   Navbar,
@@ -12,14 +11,12 @@ import {
   Form,
   FormControl,
   NavDropdown,
-  Button,
 } from "react-bootstrap";
 
 import authService from "./../../../service/auth.service";
 import productsService from "./../../../service/products.service";
 
 import Suggestions from "./Suggestions";
-import ProfileDrop from "./ProfileDrop";
 
 export default class extends Component {
   constructor(props) {
@@ -35,7 +32,7 @@ export default class extends Component {
   }
 
   handleChange = (e) => {
-    const quantity = [...this.state.cartQuantity];
+    // const quantity = [...this.state.cartQuantity];
     this.props.cartChanged(e.target.quantity);
   };
 
@@ -54,7 +51,6 @@ export default class extends Component {
   };
 
   render() {
-    console.log("props de navabr", this.props);
     return (
       <>
         <Navbar bg="light" expand="lg" onClick={() => this.hiddeSuggestion()}>
@@ -132,13 +128,13 @@ export default class extends Component {
                 </NavDropdown>
               </Link>
             ) : (
-              <Link className="nav-link" to="/account/login">
-                <img className="cart-img" src={user} />
-              </Link>
-            )}
+                <Link className="nav-link" to="/account/login">
+                  <img className="cart-img" src={user} alt={'user-logo'} />
+                </Link>
+              )}
 
             <Link className="nav-link" to="/cart">
-              <img className="cart-img" src={cart} />
+              <img className="cart-img" src={cart} alt={'cart-logo'} />
               {this.getCartTotal()}
             </Link>
           </Navbar.Collapse>

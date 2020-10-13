@@ -6,14 +6,14 @@ import './Navbar.css'
 
 import Counter from './../../shared/counter/Counter'
 
-const CartCard = ({ image, name, quantity, price, removeFromCart, decrease, increase }) => {
+const CartCard = ({ imageUrl, name, quantity, price, removeFromCart, decrease, increase }) => {
 
     return (
         <>
             <Container className="bottom-20">
                 <Row>
                     <Col >
-                        <img className="payment-image" src={image[0]} alt={name} />
+                        <img className="payment-image" src={imageUrl[0]} alt={name} />
                     </Col>
                     <Col>
                         <Counter quantity={quantity} decrease={decrease} increase={increase} />

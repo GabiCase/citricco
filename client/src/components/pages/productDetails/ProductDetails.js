@@ -1,21 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import "./ProductDetails.css";
+
 import { Button, Modal, Col, Row, Container } from "react-bootstrap";
+
 import productService from "./../../../service/products.service";
 import CounterDetails from "./../../shared/counter/CounterSmall";
+
 import EditProduct from "../editProduct/EditProduct";
 import SimpleSlider from "./Slider";
+
 class ProductDetails extends Component {
   constructor(props) {
     super();
     this.state = {
       product: undefined,
       showModalEdit: false,
-      quantity: 0,
     };
     this.productService = new productService();
   }
+
   handleModalEdit = (showModalEdit) => this.setState({ showModalEdit });
   componentDidMount = () => this.loadProducts();
   delete = () => {
@@ -24,47 +29,19 @@ class ProductDetails extends Component {
       .then(() => this.props.history.push("/products/all"))
       .catch((err) => console.log(err));
   };
+
   loadProducts = () => {
     this.productService
       .getOneProduct(this.props.match.params.product_id)
       .then((res) => this.setState({ product: res.data }))
       .catch((err) => console.log(err));
   };
-  addToCartDet = (product) => {
-    console.log(
-      "CANTIDAD DE QUANTITY AL DARLE A ADD TO CART",
-      this.state.quantity
-    );
-    const cartCopy = [...this.state.cart];
-    let itemInCart = cartCopy.find((elm) => elm.name === product.name);
-    if (itemInCart) {
-      itemInCart.quantity = itemInCart.quantity + this.state.quantity;
-    } else {
-      itemInCart = {
-        ...product,
-        quantity: this.state.quantity,
-      };
-      cartCopy.push(itemInCart);
-    }
-    this.setState({ cart: cartCopy });
-  };
-  counterIncrement = () => {
-    console.log(this.state.quantity);
-    this.setState({
-      quantity: this.state.quantity + 1,
-    });
-  };
-  counterDecrement = () => {
-    if (this.state.quantity >= 1) {
-      this.setState({ quantity: this.state.quantity - 1 });
-    }
-  };
-  counterReset = () => {
-    this.setState({
-      quantity: 0,
-    });
-  };
+
+
+
   render() {
+
+
     return (
       <div>
         {this.state.product && (
@@ -73,7 +50,7 @@ class ProductDetails extends Component {
               <main>
                 <Row>
                   <Col sm={12} md={5}>
-                    <SimpleSlider img={this.state.product.image} />
+                    <SimpleSlider imageUrl={this.state.product.imageUrl} />
                   </Col>
                   <Col sm={12} md={4}>
                     <h4>{this.state.product.name}</h4>
@@ -89,34 +66,41 @@ class ProductDetails extends Component {
                     {this.state.product && (
                       <CounterDetails
                         props={this.props}
-                        quantity={this.state.quantity}
-                        counterIncrement={() => this.counterIncrement()}
-                        counterDecrement={() => this.counterDecrement()}
-                        counterReset={() => this.counterReset()}
+                        quantity={this.props.quantity}
+                        counterIncrement={this.props.counterIncrement}
+                        counterDecrement={this.props.counterDecrement}
+                        counterReset={this.counterReset}
                       />
                     )}
                     <div className="buttons">
-                      <Button
-                        onClick={() => this.addToCartDet(this.state.product)}
-                      >
-                        Add to cart
-                      </Button>
-                      <Button>Add to wishlist</Button>
-                      {this.props.loggedInUser &&
-                        this.props.loggedInUser.role === "admin" && (
-                          <Button
-                            onClick={() => this.handleModalEdit(true)}
-                            size="sm"
-                          >
-                            Edit product
-                          </Button>
-                        )}
-                      {this.props.loggedInUser &&
-                        this.props.loggedInUser.role === "admin" && (
-                          <Button onClick={this.delete} size="sm">
-                            Delete product
-                          </Button>
-                        )}
+                      <Row>
+                        <Col>
+                          <Button onClick={() => this.props.addToCartDet(this.state.product)}>Add to cart</Button>
+                        </Col>
+                        <Col>
+                          <Link onClick={() => this.props.addToCartDet(this.state.product)} to="/cart" clasName="btn btn-dark">Buy it now!</Link>
+                        </Col>
+                        <Col ml={12}>
+                          <Button>Add to wishlist</Button>
+                        </Col>
+
+                        {this.props.loggedInUser &&
+                          this.props.loggedInUser.role === "admin" && (
+                            <Button
+                              onClick={() => this.handleModalEdit(true)}
+                              size="sm"
+                            >
+                              Edit product
+                            </Button>
+                          )}
+                        {this.props.loggedInUser &&
+                          this.props.loggedInUser.role === "admin" && (
+                            <Button onClick={this.delete} size="sm">
+                              Delete product
+                            </Button>
+                          )}
+                      </Row>
+
                     </div>
                   </Col>
                 </Row>
@@ -138,7 +122,8 @@ class ProductDetails extends Component {
               </Modal.Body>
             </Modal>
           </>
-        )}
+        )
+        }
       </div>
     );
   }

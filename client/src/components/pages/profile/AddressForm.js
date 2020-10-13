@@ -35,7 +35,7 @@ class AddressForm extends Component {
             this.state.street.length < 1 ||
             this.state.num.length < 1
         ) {
-            console.log("CAMPOS EN BLANCO");
+
             this.setState({ showAlert: true });
         } else {
             this.setState({ showAlert: false });

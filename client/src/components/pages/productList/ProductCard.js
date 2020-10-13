@@ -65,6 +65,8 @@ class ProductCard extends Component {
                     <img onClick={this.addToFav} src={unfav} alt={'unfav'} />
                   )
               ) : null}
+
+
             </div>
 
             <Card.Title>{this.props.price}€</Card.Title>

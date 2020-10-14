@@ -66,25 +66,25 @@ class ProductsList extends Component {
               Create product{" "}
             </Button>
           )}
-          <div class="dropdown">
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Sort by price
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={() => this.sortByPrice()}>
-                  low to high
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => this.sortByPriceUp()}>
-                  high to low
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
 
           <main>
-            <h1> All products</h1>
+            <h3 class="centered-text"> All products</h3>
+            <div class="dropdown">
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Sort by price
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={() => this.sortByPrice()}>
+                    low to high
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => this.sortByPriceUp()}>
+                    high to low
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
             <Row>
               {this.state.products.length ? (
                 this.state.products.map((elm) => (

@@ -12,7 +12,10 @@ export default class extends Component {
   };
   moveLogo = (e) => {
     document.addEventListener("mousemove", (e) => {
-      this.setState({ rotation: this.state.rotation + e.pageY / 1000 });
+      this.setState({ rotation: this.state.rotation + e.pageY / 1100 });
+      // e.pageY < 500
+      //   ? this.setState({ rotation: this.state.rotation + e.pageY / 1000 })
+      //   : this.setState({ rotation: this.state.rotation - e.pageY / 2000 });
     });
   };
 

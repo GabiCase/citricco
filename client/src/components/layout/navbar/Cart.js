@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import CartCard from "./CartCard";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class Cart extends Component {
@@ -18,48 +18,48 @@ class Cart extends Component {
 
   render() {
     return (
-      <Container>
-        <div>
-          <h1>Cart</h1>
-          <Row>
-            <Col sm={12} md={5}>
+      <Container className="cart-total">
+        <h3 className="text-center">Cart</h3>
 
-
-              <div>
-                {this.props.cart.length >= 1 ? (
-                  this.props.cart.map((elm) => (
-                    <CartCard
-                      key={elm._id}
-                      {...elm}
-                      removeFromCart={() => this.props.removeFromCart(elm)}
-                      decrease={() => this.props.decrease(elm)}
-                      increase={() => this.props.increase(elm)}
-                    />
-                  ))
-                ) : (
+        <Row>
+          <Col sm={12} md={6} lg={6}>
+            <div>
+              {this.props.cart.length >= 1 ? (
+                this.props.cart.map((elm) => (
+                  <CartCard
+                    key={elm._id}
+                    {...elm}
+                    removeFromCart={() => this.props.removeFromCart(elm)}
+                    decrease={() => this.props.decrease(elm)}
+                    increase={() => this.props.increase(elm)}
+                  />
+                ))
+              ) : (
                   <>
                     <h4>It appears that your cart is currently empty!</h4>
                     <p>Start shopping</p>
                     <Link to="/products/all">here</Link>
                   </>
                 )}
-                <p>Total: {this.props.total}€</p>
+              <p>Total: {this.props.total}€</p>
 
-                <Link to="/cart">Checkout</Link>
-              </div>
+              <Link className="link-cart" to="/cart">Checkout</Link>
+            </div>
 
-            </Col>
+          </Col>
 
-            <Col sm={12} md={5}>
-              <h3> Address</h3>
-              {this.props.loggedInUser ? (
-                <div>{this.props.loggedInUser.street}</div>
-              ) : (
-                <Link to="/account/login">Log in to buy</Link>
+          <Col sm={12} md={6} lg={6} className="address">
+            <h5> Address</h5>
+            {this.props.loggedInUser ? (
+              <div>{this.props.loggedInUser.street}</div>
+            ) : (
+                <Button>
+                  <Link to="/account/login">Log in to buy</Link>
+                </Button>
               )}
-            </Col>
-          </Row>
-        </div>
+          </Col>
+        </Row>
+
       </Container>
     );
   }

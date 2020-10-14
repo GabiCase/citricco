@@ -73,7 +73,7 @@ class Login extends Component {
                             <h5 className="text-signup">Don´t you have an account yet?</h5>
                             <p>Welcome! It's quick and easy to set up an account.</p>
                             <Button className="signup-left">
-                                <Link to="/account/signup">Signup here!</Link>
+                                <Link className="link" to="/account/signup">Signup here!</Link>
                             </Button>
 
                         </Col>

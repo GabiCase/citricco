@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+
+import './Signup.css'
 
 import authService from "../../../service/auth.service";
 
@@ -33,10 +35,12 @@ class Signup extends Component {
     render() {
         return (
             <>
-                <div className="form-signup">
-                    <Row className="justify-content-center">
-                        <h3>Register</h3>
-                        <Col md={{ span: 4, offset: 3 }}>
+                <Container>
+
+                    <Row className="form-register">
+
+                        <Col sm={12} md={7} lg={7} className="register-box">
+                            <h3>Register</h3>
                             <Form onSubmit={this.handleFormSubmit}>
                                 <Form.Group>
                                     <Form.Label>Username</Form.Label>
@@ -62,8 +66,9 @@ class Signup extends Component {
                             </Form>
                         </Col>
                     </Row>
+                </Container>
 
-                </div>
+
             </>
         );
     }

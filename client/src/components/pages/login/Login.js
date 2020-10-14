@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 import './Login.css'
 import { Link } from 'react-router-dom'
-;
+    ;
 
 
 import authService from "../../../service/auth.service";
@@ -40,14 +40,10 @@ class Login extends Component {
     render() {
         return (
             <>
-                <Container className="form-signup">
-                    <Row>
-                        <Col xs={12} md={5} clasName="app right">
-
-
-                            <h2>Welcome back!</h2>
-                            <p> Log in to your account:</p>
-
+                <Container >
+                    <Row className="form-signup">
+                        <Col className="right-box" xs={12} md={12} lg={6} >
+                            <h3>Welcome back!</h3>
                             <Form className="form" onSubmit={this.handleFormSubmit}>
                                 <Form.Group>
                                     <Form.Label>Username</Form.Label>
@@ -56,7 +52,7 @@ class Login extends Component {
                                         name="username"
                                         onChange={this.handleInputChange}
                                         type="text"
-                                        placeholder="Give your product a name"
+                                        placeholder="write here your username"
                                     />
                                 </Form.Group>
                                 <Form.Group>
@@ -66,18 +62,16 @@ class Login extends Component {
                                         name="password"
                                         onChange={this.handleInputChange}
                                         type="password"
-                                        placeholder="Give your product a price"
+                                        placeholder="write here your password"
                                     />
                                 </Form.Group>
                                 <Button className="login-submit" type="submit">Login</Button>
                             </Form>
-
-
-
                         </Col>
-                        <Col xs={12} md={5} className="left">
 
+                        <Col xs={12} md={12} lg={6} className="left-box">
                             <h5 className="text-signup">Don´t you have an account yet?</h5>
+                            <p>Welcome! It's quick and easy to set up an account.</p>
                             <Button className="signup-left">
                                 <Link to="/account/signup">Signup here!</Link>
                             </Button>
@@ -89,9 +83,9 @@ class Login extends Component {
                 </Container>
 
 
-      </>
-    );
-  }
+            </>
+        );
+    }
 }
 
 export default Login;

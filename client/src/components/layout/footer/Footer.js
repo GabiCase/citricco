@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import {Link} from "react-router-dom";
 
 import instagram from "./instagram.png";
 import email from "./email.png";
@@ -17,14 +18,15 @@ export default () => {
             <p>store.citricco@gmail.com </p>
           </MDBCol>
           <MDBCol md="6" className="list-unstyled">
-            <a href="https://www.instagram.com/citricco.store/?hl=es">
+            <Link href="https://www.instagram.com/citricco.store/?hl=es">
               <img src={instagram} alt="instagram" />
-            </a>
+            </Link>
+            <p>citricco.store</p>
           </MDBCol>
           <MDBContainer fluid>
             <MDBCol className="footer-copyright text-center py-3">
               &copy; {new Date().getFullYear()}{" "}
-              <a href="https://www.citricco.com"> Citricco </a>
+              <Link to="https://www.citricco.com"> Citricco </Link>
             </MDBCol>
           </MDBContainer>
         </MDBRow>

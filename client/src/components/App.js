@@ -14,6 +14,7 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Cart from "./layout/navbar/Cart";
+import Logo from "./Logo";
 
 import authService from "./../service/auth.service";
 import productsService from "./../service/products.service";
@@ -152,6 +153,10 @@ class App extends Component {
           cartChanged={this.cartChanged}
           loggedInUser={this.state.loggedInUser}
         />
+        <div className="title-box">
+          <Logo />
+          <h1>Citricco</h1>
+        </div>
         <Switch>
           <Route path="/" exact render={() => <Index />} />
           <Route

@@ -4,6 +4,42 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
+    text-align: center;
+    margin: 45px 0;
+    z-index: 99;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Raleway', sans-serif;
+}
+
+h4 {
+    font-weight: 300;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.title-box {
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 150px;
+}
+
+.title-box img {
+
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    margin-top: 30px;
+    opacity: 0.5;
+
 }

@@ -23,24 +23,28 @@ class Cart extends Component {
           <h1>Cart</h1>
           <Row>
             <Col sm={12} md={5}>
-              {this.props.cart.length >= 1 ? (
-                this.props.cart.map((elm) => (
-                  <CartCard
-                    key={elm._id}
-                    {...elm}
-                    removeFromCart={() => this.props.removeFromCart(elm)}
-                    decrease={() => this.props.decrease(elm)}
-                    increase={() => this.props.increase(elm)}
-                  />
-                ))
-              ) : (
-                <>
-                  <h4>It appears that your cart is currently empty!</h4>
-                  <p>Start shopping</p>
-                  <Link to="/products/all">here</Link>
-                </>
-              )}
-              <p>Total: {this.props.total}€</p>
+              <div>
+                {this.props.cart.length >= 1 ? (
+                  this.props.cart.map((elm) => (
+                    <CartCard
+                      key={elm._id}
+                      {...elm}
+                      removeFromCart={() => this.props.removeFromCart(elm)}
+                      decrease={() => this.props.decrease(elm)}
+                      increase={() => this.props.increase(elm)}
+                    />
+                  ))
+                ) : (
+                  <>
+                    <h4>It appears that your cart is currently empty!</h4>
+                    <p>Start shopping</p>
+                    <Link to="/products/all">here</Link>
+                  </>
+                )}
+                <p>Total: {this.props.total}€</p>
+
+                <Link to="/cart">Checkout</Link>
+              </div>
             </Col>
 
             <Col sm={12} md={5}>

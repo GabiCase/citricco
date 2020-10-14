@@ -14,7 +14,11 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Cart from "./layout/navbar/Cart";
+
 import Payment from './pages/payment/Payment'
+
+import Logo from "./Logo";
+
 
 import authService from "./../service/auth.service";
 import productsService from "./../service/products.service";
@@ -147,7 +151,9 @@ class App extends Component {
   };
 
   render() {
-    console.log('USER', this.state.loggedInUser)
+
+
+
     return (
       <>
         <Navigation
@@ -156,6 +162,10 @@ class App extends Component {
           cartChanged={this.cartChanged}
           loggedInUser={this.state.loggedInUser}
         />
+        <div className="title-box">
+          <Logo />
+          <h1>Citricco</h1>
+        </div>
         <Switch>
           <Route path="/" exact render={() => <Index />} />
           <Route
@@ -214,12 +224,18 @@ class App extends Component {
                   {...props}
                 />
               ) : (
+
                   <Redirect to="/" />
                 )
+
+             
+              
+
             }
           />
           <Route
             path="/wishlist"
+
             render={() =>
               this.state.loggedInUser ?
 
@@ -229,6 +245,7 @@ class App extends Component {
 
                 : (<Redirect to="/" />)
             }
+
           />
 
           <Route

@@ -3,7 +3,19 @@ import { Link } from "react-router-dom";
 
 import cart from "./images/cart.png";
 import user from "./images/user.png";
-import { Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
+
+
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  NavDropdown,
+  Dropdown,
+  DropdownButton,
+  ButtonGroup,
+} from "react-bootstrap";
+
 
 import authService from "./../../../service/auth.service";
 import productsService from "./../../../service/products.service";
@@ -95,35 +107,53 @@ export default class extends Component {
 
             {this.props.loggedInUser ? (
               <Link className="nav-link" to="/account/profile">
-                <NavDropdown
-                  className="user-logo transparent"
-                  title=""
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item>
-                    <Link className="dropdown-item" to="/account/profile">
-                      My profile
-                    </Link>
-                  </NavDropdown.Item>
-
-                  <NavDropdown.Item>
-                    <Link className="dropdown-item" to="account/orderhistory">
-                      Order history
-                    </Link>
-                  </NavDropdown.Item>
-
-                  <NavDropdown.Item>
-                    <Link className="dropdown-item" to="/wishlist">
-                      My whislist
-                    </Link>
-                  </NavDropdown.Item>
-                </NavDropdown>
+                {/* //------------------------ */}
+                <div className="mb-2">
+                  {["down"].map((direction) => (
+                    <DropdownButton
+                      as={ButtonGroup}
+                      key={direction}
+                      id={`dropdown-button-drop-${direction}`}
+                      drop={direction}
+                      variant="secondary"
+                      title={
+                        <img
+                          className="cart-img"
+                          src={user}
+                          alt={"user-logo"}
+                        />
+                      }
+                    >
+                      <Dropdown.Item eventKey="1">
+                        <Link className="dropdown-item" to="/account/profile">
+                          My profile
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="2">
+                        {" "}
+                        <Link
+                          className="dropdown-item"
+                          to="account/orderhistory"
+                        >
+                          Order history
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="3">
+                        <Link className="dropdown-item" to="/wishlist">
+                          My whislist
+                        </Link>
+                      </Dropdown.Item>
+                    </DropdownButton>
+                  ))}
+                </div>
               </Link>
             ) : (
+
                 <Link className="nav-link" to="/account/login">
                   <img className="cart-img" src={user} alt={"user-logo"} />
                 </Link>
               )}
+
 
             <Link className="nav-link" to="/cart">
               <img className="cart-img" src={cart} alt={"cart-logo"} />

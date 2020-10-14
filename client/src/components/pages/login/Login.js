@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+
 import './Login.css'
 import { Link } from 'react-router-dom'
+;
+
 
 import authService from "../../../service/auth.service";
 
 class Login extends Component {
+
     constructor(props) {
         super();
         this.state = {
@@ -85,11 +89,9 @@ class Login extends Component {
                 </Container>
 
 
-
-
-            </>
-        );
-    }
+      </>
+    );
+  }
 }
 
 export default Login;

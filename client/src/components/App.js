@@ -14,6 +14,7 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Cart from "./layout/navbar/Cart";
+import Payment from './pages/payment/Payment'
 
 import authService from "./../service/auth.service";
 import productsService from "./../service/products.service";
@@ -79,7 +80,7 @@ class App extends Component {
 
       cartCopy.push(itemInCart);
     }
-    this.setState({ cart: cartCopy });
+    this.setState({ cart: cartCopy, quantity: 0 });
   };
 
   removeFromCart = (productToRemove) => {
@@ -136,7 +137,9 @@ class App extends Component {
   componentDidMount = () => {
     this.loadProducts();
   };
+
   loadProducts = () => {
+
     this.productsService
       .getAllProducts()
       .then((response) => this.setState({ products: response.data }))
@@ -144,6 +147,7 @@ class App extends Component {
   };
 
   render() {
+    console.log('USER', this.state.loggedInUser)
     return (
       <>
         <Navigation
@@ -210,13 +214,21 @@ class App extends Component {
                   {...props}
                 />
               ) : (
-                <Redirect to="/account/login" />
-              )
+                  <Redirect to="/" />
+                )
             }
           />
           <Route
             path="/wishlist"
-            render={() => <Wishlist userId={this.state.loggedInUser._id} />}
+            render={() =>
+              this.state.loggedInUser ?
+
+                (< Wishlist userId={this.state.loggedInUser._id}
+                  addToCart={this.addToCart}
+                  refresh={this.loadProducts} />)
+
+                : (<Redirect to="/" />)
+            }
           />
 
           <Route
@@ -233,6 +245,13 @@ class App extends Component {
                 loggedInUser={this.state.loggedInUser}
               />
             )}
+          />
+
+          <Route
+            path="/payment"
+            render={() =>
+              <Payment />
+            }
           />
         </Switch>
 

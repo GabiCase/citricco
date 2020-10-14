@@ -25,7 +25,6 @@ export default class extends Component {
   }
 
   handleChange = (e) => {
-    // const quantity = [...this.state.cartQuantity];
     this.props.cartChanged(e.target.quantity);
   };
 
@@ -121,10 +120,10 @@ export default class extends Component {
                 </NavDropdown>
               </Link>
             ) : (
-              <Link className="nav-link" to="/account/login">
-                <img className="cart-img" src={user} alt={"user-logo"} />
-              </Link>
-            )}
+                <Link className="nav-link" to="/account/login">
+                  <img className="cart-img" src={user} alt={"user-logo"} />
+                </Link>
+              )}
 
             <Link className="nav-link" to="/cart">
               <img className="cart-img" src={cart} alt={"cart-logo"} />

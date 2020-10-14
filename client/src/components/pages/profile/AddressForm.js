@@ -52,6 +52,7 @@ class AddressForm extends Component {
             <h3>Your info</h3>
             <h4>
               {this.state.name}
+              <br />
               {this.state.lastname}
             </h4>
             <p>{this.state.city}</p>

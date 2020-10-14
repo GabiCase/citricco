@@ -3,7 +3,6 @@ import { Switch, Route, Redirect, Link } from "react-router-dom";
 import "./App.css";
 
 import Navigation from "./layout/navbar/Navbar";
-import Footer from "./layout/footer/Footer";
 
 import Index from "./pages/index/Index";
 
@@ -258,8 +257,6 @@ class App extends Component {
 
           <Route path="/payment" render={() => <Payment />} />
         </Switch>
-
-        <Footer />
       </>
     );
   }

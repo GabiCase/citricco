@@ -25,6 +25,7 @@ a.add {
   display: inline-block;
   vertical-align: top;
   position: relative;
+  padding: 10px;
 }
 
 .grid .brick img.picture-fav {

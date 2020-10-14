@@ -1,0 +1,35 @@
+div.profile-view.row {
+    padding: 80px;
+    background-color: rgb(212, 236, 210, 0.3);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.right-box {
+    border-right: 1px solid;
+    padding: 0 80px;
+}
+
+.right-box.left-box:hover {
+    opacity: 0.5;
+}
+
+.left-box {
+    padding: 0 80px;
+}
+
+.left-box h5.text-profile {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1000px) {
+    .right-box {
+        padding: initial;
+        border-right: none;
+    }
+
+    .left-box {
+        padding: initial;
+        margin-top: 80px;
+    }
+}

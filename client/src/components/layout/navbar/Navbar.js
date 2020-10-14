@@ -60,10 +60,10 @@ export default class extends Component {
             <Navbar.Brand>Citricco</Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" className="earrings-dropdown">
             <Nav className="mr-auto">
               <NavDropdown
-                title="Pendientes"
+                title="Earrings"
                 id="basic-nav-dropdown"
                 className="earrings"
               >
@@ -106,7 +106,7 @@ export default class extends Component {
             {this.props.loggedInUser ? (
               <Link className="nav-link" to="/account/profile">
                 {/* //------------------------ */}
-                <div className="mb-2">
+                <div className="mb-2 navbar-profile">
                   {["down"].map((direction) => (
                     <DropdownButton
                       as={ButtonGroup}

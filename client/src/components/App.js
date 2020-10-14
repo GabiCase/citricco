@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 import "./App.css";
 
 import Navigation from "./layout/navbar/Navbar";
-import Footer from "./layout/footer/Footer";
 
 import Index from "./pages/index/Index";
 
@@ -15,10 +14,9 @@ import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Cart from "./layout/navbar/Cart";
 
-import Payment from './pages/payment/Payment'
+import Payment from "./pages/payment/Payment";
 
 import Logo from "./Logo";
-
 
 import authService from "./../service/auth.service";
 import productsService from "./../service/products.service";
@@ -143,7 +141,6 @@ class App extends Component {
   };
 
   loadProducts = () => {
-
     this.productsService
       .getAllProducts()
       .then((response) => this.setState({ products: response.data }))
@@ -151,9 +148,6 @@ class App extends Component {
   };
 
   render() {
-
-
-
     return (
       <>
         <Navigation
@@ -164,7 +158,9 @@ class App extends Component {
         />
         <div className="title-box">
           <Logo />
-          <h1>Citricco</h1>
+          <Link className="text-dec-none">
+            <h1>Citricco</h1>
+          </Link>
         </div>
         <Switch>
           <Route path="/" exact render={() => <Index />} />
@@ -224,28 +220,23 @@ class App extends Component {
                   {...props}
                 />
               ) : (
-
-                  <Redirect to="/" />
-                )
-
-             
-              
-
+                <Redirect to="/" />
+              )
             }
           />
           <Route
             path="/wishlist"
-
             render={() =>
-              this.state.loggedInUser ?
-
-                (< Wishlist userId={this.state.loggedInUser._id}
+              this.state.loggedInUser ? (
+                <Wishlist
+                  userId={this.state.loggedInUser._id}
                   addToCart={this.addToCart}
-                  refresh={this.loadProducts} />)
-
-                : (<Redirect to="/" />)
+                  refresh={this.loadProducts}
+                />
+              ) : (
+                <Redirect to="/" />
+              )
             }
-
           />
 
           <Route
@@ -264,15 +255,8 @@ class App extends Component {
             )}
           />
 
-          <Route
-            path="/payment"
-            render={() =>
-              <Payment />
-            }
-          />
+          <Route path="/payment" render={() => <Payment />} />
         </Switch>
-
-        <Footer />
       </>
     );
   }

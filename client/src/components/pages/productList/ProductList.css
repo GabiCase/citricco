@@ -40,6 +40,25 @@ h1 {
 .card-list.card {
     border: 0;
     border-radius: 0;
+    margin: 0px 20px;
+}
+
+.name.card-title.h5 {
+    margin-left: 8px;
+    margin-bottom: 3px;
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+.price.card-title.h5 {
+    margin-left: 8px;
+
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 10px 10px 30px 10px;
 }
 
 .card-img-top {

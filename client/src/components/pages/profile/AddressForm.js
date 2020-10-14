@@ -49,11 +49,12 @@ class AddressForm extends Component {
       <>
         {!this.state.showEdit | this.props.loggedInUser.name ? (
           <div>
-            <h3>Your info</h3>
-            <h4>
+            <h4>Your info</h4>
+            <h5>
               {this.state.name}
+              <br />
               {this.state.lastname}
-            </h4>
+            </h5>
             <p>{this.state.city}</p>
             <p>{this.state.postal_code}</p>
             <p>{this.state.street}</p>

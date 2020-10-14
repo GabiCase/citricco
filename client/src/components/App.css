@@ -4,10 +4,21 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-h1 {
-    text-align: center;
-    margin: 45px 0;
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+a {
     z-index: 99;
+}
+
+a h1 {
+    text-align: center;
+    margin: 25px 0;
+    z-index: 999;
+    color: #000000c9;
+
 }
 
 h1,
@@ -20,9 +31,20 @@ h6 {
 }
 
 h4 {
-    font-weight: 300;
+    font-weight: 500;
     font-size: 1.2em;
     margin-bottom: 20px;
+}
+
+h3.centered-text {
+    margin-bottom: 32px;
+    font-weight: 400;
+}
+
+.h5,
+h5 {
+    font-size: 1.25rem;
+    font-weight: 300;
 }
 
 .btn {
@@ -34,6 +56,7 @@ h4 {
     background-color: white;
     color: #85ac82;
     border: 1px solid #90b88d;
+    margin-bottom: 15px;
 }
 
 .btn-success:not(:disabled):not(.disabled).active,
@@ -46,7 +69,7 @@ h4 {
 
 button.btn.btn-sm {
     padding: 3px 15px;
-    margin:0 5px;
+    margin: 0 5px;
 }
 
 .name.card-title.h5 {
@@ -60,7 +83,9 @@ button.btn.btn-sm {
     font-weight: 200;
 }
 
-
+.centered-text {
+    text-align: center;
+}
 
 .title-box {
     margin-top: 20px;
@@ -79,4 +104,10 @@ button.btn.btn-sm {
     margin-top: 30px;
     opacity: 0.5;
 
+}
+
+
+.bg-light {
+    background-color: #f8f9fa00 !important;
+    border-bottom: 1px solid #d4ecd2;
 }

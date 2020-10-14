@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import cart from "./images/cart.png";
 import user from "./images/user.png";
 
-
 import {
   Navbar,
   Nav,
@@ -15,7 +14,6 @@ import {
   DropdownButton,
   ButtonGroup,
 } from "react-bootstrap";
-
 
 import authService from "./../../../service/auth.service";
 import productsService from "./../../../service/products.service";
@@ -59,13 +57,13 @@ export default class extends Component {
       <>
         <Navbar bg="light" expand="lg" onClick={() => this.hiddeSuggestion()}>
           <Link to="/">
-            <Navbar.Brand>Citricco-logo</Navbar.Brand>
+            <Navbar.Brand>Citricco</Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" className="earrings-dropdown">
             <Nav className="mr-auto">
               <NavDropdown
-                title="Pendientes"
+                title="Earrings"
                 id="basic-nav-dropdown"
                 className="earrings"
               >
@@ -108,7 +106,7 @@ export default class extends Component {
             {this.props.loggedInUser ? (
               <Link className="nav-link" to="/account/profile">
                 {/* //------------------------ */}
-                <div className="mb-2">
+                <div className="mb-2 navbar-profile">
                   {["down"].map((direction) => (
                     <DropdownButton
                       as={ButtonGroup}
@@ -148,12 +146,10 @@ export default class extends Component {
                 </div>
               </Link>
             ) : (
-
-                <Link className="nav-link" to="/account/login">
-                  <img className="cart-img" src={user} alt={"user-logo"} />
-                </Link>
-              )}
-
+              <Link className="nav-link" to="/account/login">
+                <img className="cart-img" src={user} alt={"user-logo"} />
+              </Link>
+            )}
 
             <Link className="nav-link" to="/cart">
               <img className="cart-img" src={cart} alt={"cart-logo"} />

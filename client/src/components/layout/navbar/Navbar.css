@@ -8,6 +8,13 @@
     object-fit: cover;
 }
 
+
+a {
+    color: #747474;
+    text-decoration: none;
+    background-color: transparent;
+}
+
 .navbar.container {
     margin-bottom: 40px;
 }
@@ -94,6 +101,7 @@ a .nav-link {
     box-shadow: 0 0 0 0.2rem #b7dab4;
     ;
 }
+
 h3.text-center {
     margin-bottom: 50px;
     font-weight: 400;
@@ -124,4 +132,17 @@ h3.text-center {
     padding: 20px 80px;
 }
 
+
+
+
+button#dropdown-button-drop-down {
+    margin: 0;
+}
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 154%;
+    left: -25px;
+}
 

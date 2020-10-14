@@ -29,11 +29,14 @@ export default class extends Component {
           <h3 class="centered-text"> Profile</h3>
           <Row className="form-signup">
             <Col xs={12} md={12} lg={6} className="right-box">
-              <h4>hi, {this.props.loggedInUser.username}!</h4>
+              <h4>Hi, {this.props.loggedInUser.username}!</h4>
               <p>
                 Not {this.props.loggedInUser.username}?
                 <Link onClick={() => this.logoutUser()}> Logout </Link>
               </p>
+              <Link to="/wishlist">
+                <h6>Check your favorites</h6>
+              </Link>
             </Col>
 
             <Col xs={12} md={12} lg={6} className="left-box">

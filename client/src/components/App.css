@@ -31,7 +31,7 @@ h6 {
 }
 
 h4 {
-    font-weight: 300;
+    font-weight: 500;
     font-size: 1.2em;
     margin-bottom: 20px;
 }
@@ -39,6 +39,12 @@ h4 {
 h3.centered-text {
     margin-bottom: 32px;
     font-weight: 400;
+}
+
+.h5,
+h5 {
+    font-size: 1.25rem;
+    font-weight: 300;
 }
 
 .btn {
@@ -98,4 +104,10 @@ button.btn.btn-sm {
     margin-top: 30px;
     opacity: 0.5;
 
+}
+
+
+.bg-light {
+    background-color: #f8f9fa00 !important;
+    border-bottom: 1px solid #d4ecd2;
 }

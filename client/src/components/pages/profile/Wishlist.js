@@ -1,67 +1,54 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import productService from '../../../service/products.service'
-import { Container } from 'react-bootstrap'
-import FavCard from './FavCard'
+import productService from "../../../service/products.service";
+import { Container } from "react-bootstrap";
+import FavCard from "./FavCard";
 
-import './Wishlist.css'
+import "./Wishlist.css";
 
 class Wishlist extends Component {
-    constructor(props) {
-        super()
-        this.state = {
-            favArray: [],
-        }
-        this.productService = new productService()
-    }
+  constructor(props) {
+    super();
+    this.state = {
+      favArray: [],
+    };
+    this.productService = new productService();
+  }
 
-    componentDidMount = () => this.getUserFav()
+  componentDidMount = () => this.getUserFav();
 
-    getUserFav = () => {
+  getUserFav = () => {
+    this.productService
+      .getFavs(this.props.userId)
+      .then((response) => this.setState({ favArray: response.data.fav }))
+      .catch((err) => console.log("ERROR", err));
+  };
 
-        this.productService
-            .getFavs(this.props.userId)
-            .then(response => this.setState({ favArray: response.data.fav }))
-            .catch((err) => console.log("ERROR", err));
-    }
+  render() {
+    return (
+      <>
+        <div className="container">
+          <div className="wrapper">
+            <div className="tittle">
+              <h3>My wishlist</h3>
+            </div>
 
-    // removeFromFav = (productToRemove) => {
-    //     const removeArr = [...this.state.favArray];
-    //     const favUpdated = removeArr.filter(
-    //         (product) => product !== productToRemove
-    //     );
-    //     this.setState({ favArray: favUpdated });
-
-    // }
-
-
-    render() {
-
-        return (
-            <>
-
-                <div className="container">
-                    <div className="wrapper">
-                        <div className="tittle">
-                            <h3>My wishlist</h3>
-                        </div>
-
-                        <div className="grid gutterless">
-                            {this.state.favArray.map(elm => <FavCard key={elm} id={elm} addToCart={this.props.addToCart} userId={this.props.userId} getUserFav={this.getUserFav} />
-                            )}
-                        </div>
-                    </div >
-                </div>
-            </>
-        )
-    }
-
-
+            <div className="grid gutterless">
+              {this.state.favArray.map((elm) => (
+                <FavCard
+                  key={elm}
+                  id={elm}
+                  addToCart={this.props.addToCart}
+                  userId={this.props.userId}
+                  getUserFav={this.getUserFav}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
-export default Wishlist
-
-
-
-
-
+export default Wishlist;

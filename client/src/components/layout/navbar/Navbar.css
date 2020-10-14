@@ -78,3 +78,20 @@ a .nav-link {
     margin: 0;
 
 }
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.show>.btn-secondary.dropdown-toggle {
+    color: #b7dab4;
+    background-color: #d4ecd200;
+    border-color: #ffffff00;
+}
+
+.show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem #b7dab4;
+    ;
+}

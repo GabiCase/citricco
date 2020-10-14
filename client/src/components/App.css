@@ -25,6 +25,43 @@ h4 {
     margin-bottom: 20px;
 }
 
+.btn {
+    border-radius: 1rem;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    background-color: white;
+    color: #85ac82;
+    border: 1px solid #90b88d;
+}
+
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show>.btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #85ac82;
+    border-color: #85ac82;
+}
+
+button.btn.btn-sm {
+    padding: 3px 15px;
+    margin:0 5px;
+}
+
+.name.card-title.h5 {
+    font-size: 1.1em;
+    font-weight: 400;
+
+}
+
+.price.card-title.h5 {
+    font-size: 1.1em;
+    font-weight: 200;
+}
+
+
+
 .title-box {
     margin-top: 20px;
     position: relative;

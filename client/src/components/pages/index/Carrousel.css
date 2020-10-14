@@ -12,9 +12,6 @@
     .carrousel {
         display: none;
     }
-
-
-
 }
 
 @media (min-width: 568px) {
@@ -27,7 +24,6 @@
         height: 180px;
         object-fit: cover;
     }
-
 }
 
 @media (min-width: 768px) {
@@ -40,7 +36,6 @@
         height: 200px;
         object-fit: cover;
     }
-
 }
 
 @media (min-width: 1024px) {

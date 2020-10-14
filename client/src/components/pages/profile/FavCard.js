@@ -49,13 +49,19 @@ class FavCard extends Component {
             <Link onClick={() => this.deleteFav()} className="delete-content">
               <img className="appear-on-hover" src={trash} alt="trash" />
             </Link>
+            <div className=".appear-on-hover on-hover">
+              <h6 className="appear-on-hover">{this.state.product.name}</h6>
+              <div className="appear-on-hover">
+                <p className="appear-on-hover">{this.state.product.price}€</p>
+              </div>
 
-            <h4>{this.state.product.name}</h4>
-            <div>{this.state.product.price}€</div>
-
-            <Button onClick={() => this.props.addToCart(this.state.product)}>
-              Add to cart
-            </Button>
+              <Button
+                className="appear-on-hover"
+                onClick={() => this.props.addToCart(this.state.product)}
+              >
+                Add to cart
+              </Button>
+            </div>
           </div>
         )}
       </>

@@ -23,6 +23,8 @@ class Cart extends Component {
           <h1>Cart</h1>
           <Row>
             <Col sm={12} md={5}>
+
+
               <div>
                 {this.props.cart.length >= 1 ? (
                   this.props.cart.map((elm) => (
@@ -45,6 +47,7 @@ class Cart extends Component {
 
                 <Link to="/cart">Checkout</Link>
               </div>
+
             </Col>
 
             <Col sm={12} md={5}>

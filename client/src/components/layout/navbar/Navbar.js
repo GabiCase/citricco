@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import cart from "./images/cart.png";
 import user from "./images/user.png";
+
+
 import {
   Navbar,
   Nav,
@@ -13,6 +15,7 @@ import {
   DropdownButton,
   ButtonGroup,
 } from "react-bootstrap";
+
 
 import authService from "./../../../service/auth.service";
 import productsService from "./../../../service/products.service";
@@ -34,7 +37,6 @@ export default class extends Component {
   }
 
   handleChange = (e) => {
-    // const quantity = [...this.state.cartQuantity];
     this.props.cartChanged(e.target.quantity);
   };
 
@@ -146,10 +148,12 @@ export default class extends Component {
                 </div>
               </Link>
             ) : (
-              <Link className="nav-link" to="/account/login">
-                <img className="cart-img" src={user} alt={"user-logo"} />
-              </Link>
-            )}
+
+                <Link className="nav-link" to="/account/login">
+                  <img className="cart-img" src={user} alt={"user-logo"} />
+                </Link>
+              )}
+
 
             <Link className="nav-link" to="/cart">
               <img className="cart-img" src={cart} alt={"cart-logo"} />

@@ -56,10 +56,11 @@ router.put("/fav/:user_id", (req, res) => {
 });
 
 router.put("/unfav/:user_id", (req, res) => {
-
+  console.log(req.body.fav)
   User.findByIdAndUpdate(req.params.user_id, {
-    $pull: { fav: req.body.fav },
-  })
+    $pull: { fav: req.body.fav }
+  }, { new: true }
+  )
     .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err));
 });

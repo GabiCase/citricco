@@ -1,75 +1,86 @@
-
 a.add {
   color: black;
 }
+
 .grid {
   transition: all .5s ease-in-out;
   column-gap: 30px;
   column-fill: initial;
   padding: 10vh 12vw 10vh 12vw;
 }
+
 .wrapper {
   height: 400px;
   text-align: center;
 }
+
 .wrapper h3 {
   padding-top: 70px;
   font-family: Raleway;
   font-weight: 200;
 }
+
 .grid .brick {
   margin-bottom: 30px;
   display: inline-block;
   vertical-align: top;
   position: relative;
 }
+
 .grid .brick img.picture-fav {
   transition: all .5s ease-in-out;
   backface-visibility: hidden;
 }
 
-.grid .brick:hover img.picture-fav{
-  opacity: .65;
-}
 .brick img.appear-on-hover {
   opacity: 0;
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 30px;
-  width: 30px;
+  top: calc(50% - 70px);
+  left: calc(50% - 20px);
+  height: 40px;
+  width: 40px;
   z-index: 55;
 }
- .grid.brick:hover img.picture-fav.brick img.appear-on-hover{
-   opacity: 1;
-  }
+
+.brick:hover .picture-fav {
+  opacity: 0.4;
+
+}
+
+.brick:hover .appear-on-hover {
+  opacity: 0.9;
+  transition: opacity .5s;
+  filter: drop-shadow(1px 1px 1px #ffffff);
+}
 
 .grid.gutterless {
   column-gap: 0;
 }
+
 .grid.gutterless .brick {
   margin-bottom: 0;
 }
-.grid.gutterless .brick p:hover {
-  cursor: crosshair;
-}
+
 
 /* Masonry on tablets */
- @media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .grid {
     column-count: 2;
   }
 }
+
 /* Masonry on big screens */
 @media only screen and (min-width: 1024px) {
   .desc {
     font-size: 1.25em;
   }
+
   .grid {
     column-count: 3;
   }
 }
+
 img {
   max-width: 100%;
   vertical-align: middle;
-} 
+}

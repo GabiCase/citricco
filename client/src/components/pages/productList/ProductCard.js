@@ -43,7 +43,7 @@ class ProductCard extends Component {
   render() {
     console.log("PROPS DE LOGEDIN USER FAV", this.props.loggedInUser);
     return (
-      <Col sm={12} md={4} lg={3}>
+      <Col sm={12} md={6} lg={4}>
         <Card className="card-list">
           <Card.Img
             className="300product"
@@ -52,7 +52,7 @@ class ProductCard extends Component {
           />
           <Card.Body>
             <div className="card-component">
-              <Card.Title>{this.props.name}</Card.Title>
+              <Card.Title className="name">{this.props.name}</Card.Title>
 
               {this.props.loggedInUser && (
                 <img
@@ -63,19 +63,20 @@ class ProductCard extends Component {
               )}
             </div>
 
-            <Card.Title>{this.props.price}€</Card.Title>
+            <Card.Title className="price">{this.props.price}€</Card.Title>
+            <div className="buttons-box-card-product">
+              <Button onClick={this.props.addToCart} variant="sm">
+                Add to cart
+              </Button>
 
-            <Button onClick={this.props.addToCart} variant="sm">
-              Add to cart
-            </Button>
-
-            <Link
-              to={`/products/details/${this.props._id}`}
-              increase={() => this.props.increase(this.props.product)}
-              decrease={() => this.props.decrease(this.props.product)}
-            >
-              <Button variant="sm">Details</Button>
-            </Link>
+              <Link
+                to={`/products/details/${this.props._id}`}
+                increase={() => this.props.increase(this.props.product)}
+                decrease={() => this.props.decrease(this.props.product)}
+              >
+                <Button variant="sm">Details</Button>
+              </Link>
+            </div>
           </Card.Body>
         </Card>
       </Col>

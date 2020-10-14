@@ -4,8 +4,7 @@ import productsService from "./../../../service/products.service";
 
 import { Container, Row } from "react-bootstrap";
 
-import { Link } from 'react-router-dom'
-
+import { Link } from "react-router-dom";
 
 import SuggestionCard from "./SuggestionCard";
 
@@ -31,7 +30,6 @@ class Suggestions extends Component {
       .catch((err) => console.log("ERROR", err));
   };
 
-
   render() {
     const suggCopy = [...this.state.products];
     const suggFiltered = suggCopy.filter((elm) =>
@@ -42,16 +40,21 @@ class Suggestions extends Component {
       <>
         <Container className="suggestions-box">
           <Row className="border-bottom">
-            {suggFiltered < 1 ?
-              <p>No matches found! You can see all of our products <Link to="/products/all">here</Link></p>
-              :
+
+            {suggFiltered < 1 ? (
+              <p>
+                No matches found! You can see all of our products
+                <Link to="/products/all">here</Link>
+              </p>
+            ) : (
+
               suggFiltered.map((elm) => (
                 <SuggestionCard
                   hiddeSuggestion={this.props.hiddeSuggestion}
                   key={elm._id}
+
                   {...elm} />))
             }
-
 
           </Row>
         </Container>
@@ -60,7 +63,5 @@ class Suggestions extends Component {
       </>
     );
   }
-
 }
-
 export default Suggestions;

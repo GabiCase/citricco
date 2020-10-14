@@ -3,9 +3,10 @@
 }
 
 .payment-image {
-    width: 100px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
-
 
 .navbar.container {
     margin-bottom: 40px;
@@ -15,13 +16,11 @@
     background-color: transparent;
     border: 0;
 }
-
 .col-suggestion img {
     width: 150px;
     height: 150px;
     object-fit: cover;
 }
-
 .suggestions-box {
     padding: 80px;
     justify-content: space-between;
@@ -38,6 +37,7 @@
 .user-logo.transparent a {
     color: transparent;
 }
+
 
 .user-logo.transparent a.dropdown-item {
     color: black;
@@ -76,7 +76,6 @@ p.name {
 
 a .nav-link {
     margin: 0;
-
 }
 
 .btn-secondary:hover {
@@ -95,3 +94,34 @@ a .nav-link {
     box-shadow: 0 0 0 0.2rem #b7dab4;
     ;
 }
+h3.text-center {
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+.bottom-20 {
+    padding: 20px 80px;
+    margin-bottom: 0;
+    margin-top:0;
+    padding-top:0;
+    padding-bottom:0;
+    height: 200px;
+}
+
+.trash {
+    height: 18px;
+    object-fit: cover;
+}
+
+.product-box{
+    margin-top:0;   
+    margin-bottom: 0;
+    padding-top: 20px;
+    border-top: 1px solid grey;
+    
+}
+
+.address {
+    padding: 20px 80px;
+}
+
+

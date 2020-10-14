@@ -22,6 +22,11 @@ div.form-signup.row{
   margin-bottom: 30px;
 }
 
+.signup-left a.link{
+  color: #85ac82;
+  text-decoration: none;
+}
+
  @media  (max-width: 1000px) {
   .right-box{
   padding: initial;

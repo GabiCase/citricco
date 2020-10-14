@@ -48,12 +48,13 @@ class Suggestions extends Component {
               </p>
             ) : (
 
-              suggFiltered.map((elm) => (
-                <SuggestionCard
-                  hiddeSuggestion={this.props.hiddeSuggestion}
-                  key={elm._id}
+                suggFiltered.map((elm) =>
+                  <SuggestionCard
+                    hiddeSuggestion={this.props.hiddeSuggestion}
+                    key={elm._id}
 
-                  {...elm} />))
+                    {...elm} />)
+              )
             }
 
           </Row>

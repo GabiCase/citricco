@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import SuggestionCard from "./SuggestionCard";
 
 class Suggestions extends Component {
-
   constructor(props) {
     super();
     this.state = {
@@ -40,26 +39,22 @@ class Suggestions extends Component {
       <>
         <Container className="suggestions-box">
           <Row className="border-bottom">
-
             {suggFiltered < 1 ? (
               <p>
                 No matches found! You can see all of our products
                 <Link to="/products/all">here</Link>
               </p>
             ) : (
-
               suggFiltered.map((elm) => (
                 <SuggestionCard
                   hiddeSuggestion={this.props.hiddeSuggestion}
                   key={elm._id}
-
-                  {...elm} />))
-            }
-
+                  {...elm}
+                />
+              ))
+            )}
           </Row>
         </Container>
-
-
       </>
     );
   }

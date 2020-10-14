@@ -17,38 +17,55 @@ class Cart extends Component {
   componentDidMount = () => this.props.calculateTotal(this.state.cart);
 
   render() {
+    console.log('props en cart', this.props)
     return (
       <Container className="cart-total">
         <h3 className="text-center">Cart</h3>
 
         <Row>
-          <Col sm={12} md={6} lg={6}>
+          <Col sm={12} md={12} lg={6}>
             <div>
               {this.props.cart.length >= 1 ? (
                 this.props.cart.map((elm) => (
-                  <CartCard
-                    key={elm._id}
-                    {...elm}
-                    removeFromCart={() => this.props.removeFromCart(elm)}
-                    decrease={() => this.props.decrease(elm)}
-                    increase={() => this.props.increase(elm)}
-                  />
+                  <>
+                    <CartCard
+                      key={elm._id}
+                      {...elm}
+                      removeFromCart={() => this.props.removeFromCart(elm)}
+                      decrease={() => this.props.decrease(elm)}
+                      increase={() => this.props.increase(elm)} />
+
+
+                  </>
                 ))
               ) : (
                   <>
-                    <h4>It appears that your cart is currently empty!</h4>
-                    <p>Start shopping</p>
-                    <Link to="/products/all">here</Link>
+                    <div className="empty-cart">
+                      <h4>It appears that your cart is currently empty!</h4>
+                      <Button><Link to="/products/all">Start shopping!</Link></Button>
+                    </div>
+
                   </>
                 )}
-              <p>Total: {this.props.total}€</p>
+              {this.props.cart.length >= 1 &&
+                <div className="checkout">
+                  <p>Total:<strong> {this.props.total}€</strong></p>
 
-              <Link className="link-cart" to="/cart">Checkout</Link>
+                  {this.props.loggedInUser ?
+                    <Button><Link className="link-cart" to="/payment" > Checkout</Link></Button>
+                    :
+                    <Button><Link className="link-cart" to="/account/login"> Checkout</Link></Button>
+                  }
+
+                </div>}
+
+
+
             </div>
 
           </Col>
 
-          <Col sm={12} md={6} lg={6} className="address">
+          <Col sm={12} md={12} lg={6} className="address">
             <h5> Address</h5>
             {this.props.loggedInUser ? (
               <div>{this.props.loggedInUser.street}</div>
@@ -60,7 +77,7 @@ class Cart extends Component {
           </Col>
         </Row>
 
-      </Container>
+      </Container >
     );
   }
 }

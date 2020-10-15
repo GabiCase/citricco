@@ -15,16 +15,12 @@ h1 {
 }
 
 .details {
-    margin-top: 50px;
+    margin-top: 0px;
+    margin-bottom: 50px;
 }
 
 .details .row {
     justify-content: center;
-}
-
-.details img {
-    width: 100%;
-
 }
 
 .card-component {

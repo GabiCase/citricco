@@ -13,28 +13,66 @@ const CartCard = ({ imageUrl, name, quantity, price, removeFromCart, decrease, i
 
     return (
         <>
-            <Container className="bottom-20">
+
+            <Container className="details">
+                <main>
+                    <Row>
+
+
+                        <Col xs={7} sm={5} md={6} lg={6} className="img-details">
+                            <img className="payment-image" src={imageUrl[0]} alt={name} />
+                        </Col>
+
+
+                        <Col xs={7} sm={5} md={6} lg={6}>
+                            <Row>
+                                <Col lg={12}>
+                                    <Row>
+                                        <Col xs={8} ><h4>{name}</h4></Col>
+                                        <Col xs={4}> <Link className="remove-button" onClick={removeFromCart}><img className="trash" src={trash} alt="trash logo" /></Link>  </Col>
+                                    </Row>
+
+
+                                </Col>
+                                <Col lg={12}>
+                                    <div>{price}€</div>
+                                </Col>
+                                <Col lg={12}>
+                                    <Counter quantity={quantity} decrease={decrease} increase={increase} />
+                                </Col>
+                            </Row>
+
+
+
+
+
+
+                        </Col>
+
+                    </Row>
+                </main>
+
+
+
+
+            </Container>
+
+
+            {/* <Container className="bottom-20">
                 <Row>
-                    <Col>
+                    <Col sm={10} md={6}>
                         <img className="payment-image" src={imageUrl[0]} alt={name} />
                     </Col>
 
-                    <Col>
-                        <Row>
+                    <Col sm={10} md={6}>
+                        <h4>{name}</h4>
+                        <Link className="remove-button" onClick={removeFromCart}><img className="trash" src={trash} alt="trash logo" /></Link>
+                        <p>{price}€</p>
+                        <Counter quantity={quantity} decrease={decrease} increase={increase} />
 
-                            <Col>
-                                <Row>
-                                    <Col> <h4>{name}</h4></Col>
-                                    <Col> <Link className="remove-button" onClick={removeFromCart}><img className="trash" src={trash} alt="trash logo" /></Link></Col>
-                                </Row>
-                            </Col>
-
-                            <Col>  <p>{price}€</p></Col>
-                            <Col> <Counter quantity={quantity} decrease={decrease} increase={increase} /></Col>
-                        </Row>
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
 
         </>
 

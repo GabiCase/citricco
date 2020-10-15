@@ -30,7 +30,9 @@ class FavCard extends Component {
     console.log("id en props", this.props.id);
     this.productService
       .unfav(this.props.userId, { fav: this.props.id })
-      .then(() => this.props.getUserFav())
+      .then(() =>
+        this.props.fetchUser(),
+        this.props.getUserFav())
       .catch((err) => console.log("ERROR", err));
   };
 

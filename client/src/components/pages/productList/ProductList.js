@@ -94,6 +94,7 @@ class ProductsList extends Component {
                     addToCart={() => this.props.addToCart(elm)}
                     key={elm._id}
                     quantity={elm.quantity}
+                    fetchUser={this.props.fetchUser}
                     increase={() => this.props.increase(elm)}
                     decrease={() => this.props.decrease(elm)}
                     refreshList={this.loadProducts}
@@ -104,8 +105,8 @@ class ProductsList extends Component {
                   />
                 ))
               ) : (
-                <Spinner />
-              )}
+                  <Spinner />
+                )}
             </Row>
           </main>
         </Container>

@@ -27,3 +27,12 @@
     margin: auto;
 
 }
+
+@media (max-width:566px){
+    .trending button.slick-arrow.slick-next::before{
+    color: transparent;
+}
+.trending button.slick-arrow.slick-prev::before{
+     color: transparent;
+}
+}

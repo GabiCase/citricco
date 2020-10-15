@@ -42,7 +42,7 @@ class Suggestions extends Component {
             {suggFiltered < 1 ? (
               <p>
                 No matches found! You can see all of our products
-                <Link to="/products/all">here</Link>
+                <Link to="/products/all"> here</Link>
               </p>
             ) : (
 

@@ -28,11 +28,22 @@
 
 }
 
+.start {
+    width: 100%;
+    margin-top: 40px;
+}
 @media (max-width:566px){
     .trending button.slick-arrow.slick-next::before{
     color: transparent;
 }
 .trending button.slick-arrow.slick-prev::before{
      color: transparent;
+}
+}
+
+
+@media (min-width:563px){
+.start{
+    display: none;
 }
 }

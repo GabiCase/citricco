@@ -7,7 +7,7 @@ import "./ProductList.css";
 import productsService from "../../../service/products.service";
 import ProductCard from "./ProductCard";
 import NewProduct from "../newProduct/NewProduct";
-//import Wishlist from "../Wishlist";
+import ToastCard from '../../shared/toast/Toast'
 
 import Spinner from "./../../shared/spinner/Spinner";
 
@@ -17,20 +17,15 @@ class ProductsList extends Component {
     this.state = {
       products: [],
       showModalNew: false,
+      productName: ''
     };
     this.productsService = new productsService();
   }
 
-  // receiveIdRemove = (receivedId) => {
-  //   this.setState({ favProdId: receivedId }, () => this.removeFromFav());
-  // };
-  // receiveIdAdd = (receivedId) => {
-  //   this.setState({ favProdId: receivedId }, () => this.addToFav());
-  // };
-
   componentDidMount = () => {
     this.loadProducts();
   };
+
   loadProducts = () => {
     this.productsService
       .getAllProducts()
@@ -98,6 +93,7 @@ class ProductsList extends Component {
                     increase={() => this.props.increase(elm)}
                     decrease={() => this.props.decrease(elm)}
                     refreshList={this.loadProducts}
+
                     isFav={
                       this.props.loggedInUser &&
                       this.props.loggedInUser.fav.includes(elm._id)
@@ -109,6 +105,7 @@ class ProductsList extends Component {
                 )}
             </Row>
           </main>
+          {this.props.toast && <ToastCard toast={this.props.toast} productName={this.props.productName} productPrice={this.props.productPrice} />}
         </Container>
 
         <Modal

@@ -5,6 +5,7 @@ import "./ProductDetails.css";
 
 import { Button, Modal, Col, Row, Container } from "react-bootstrap";
 
+import ToastCard from '../../shared/toast/Toast'
 import productService from "./../../../service/products.service";
 import CounterDetails from "./../../shared/counter/CounterSmall";
 
@@ -54,6 +55,7 @@ class ProductDetails extends Component {
         {this.state.product && (
           <>
             <Container className="details">
+              {this.props.toast && <ToastCard name={this.state.product.name} price={this.state.product.price} />}
               <main>
                 <div >
                   {this.props.loggedInUser &&

@@ -39,6 +39,9 @@ class App extends Component {
       products: undefined,
       alert: false,
       key: "",
+      toast: false,
+      productName: '',
+      productPrice: '',
     };
     this.authService = new authService();
     this.productsService = new productsService();
@@ -72,7 +75,9 @@ class App extends Component {
       };
       cartCopy.push(itemInCart);
     }
-    this.setState({ cart: cartCopy });
+    this.setState({ cart: cartCopy })
+    this.setState({ productName: product.name, productPrice: product.price })
+    this.showToast()
   };
 
   addToCartDet = (product) => {
@@ -89,16 +94,19 @@ class App extends Component {
 
       cartCopy.push(itemInCart);
     }
-    this.setState({ cart: cartCopy, quantity: 0 });
+    { this.state.quantity && this.showToast() }
     this.showAlert()
+    this.setState({ cart: cartCopy, quantity: 0 });
+
+
   };
 
   showAlert = () => {
     console.log(this.state.quantity)
     if (this.state.quantity <= 0) {
-      this.setState({ alert: false })
-    } else {
       this.setState({ alert: true })
+    } else {
+      this.setState({ alert: false })
     }
   }
 
@@ -168,6 +176,16 @@ class App extends Component {
       .catch((err) => console.log("ERROR", err));
   };
 
+
+  showToast = () => {
+    console.log('estoy en showtoast y el estado es', this.state.toast)
+    this.setState({ toast: true })
+    setTimeout(function () {
+      this.setState({ toast: false });
+    }.bind(this), 3000);
+  }
+
+
   render() {
     return (
       <>
@@ -179,7 +197,7 @@ class App extends Component {
         />
         <div className="title-box">
           <Logo />
-          <Link className="text-dec-none">
+          <Link className="text-dec-none" to="/">
             <h1>Citricco</h1>
           </Link>
         </div>
@@ -192,6 +210,11 @@ class App extends Component {
                 addToCart={this.addToCart}
                 loggedInUser={this.state.loggedInUser}
                 fetchUser={this.fetchUser}
+                toast={this.state.toast}
+                productName={this.state.productName}
+                productPrice={this.state.productPrice}
+
+
               />
             )}
           />
@@ -214,6 +237,7 @@ class App extends Component {
                 counterIncrement={this.counterIncrement}
                 counterDecrement={this.counterDecrement}
                 alert={this.state.alert}
+                toast={this.state.toast}
               />
             )}
           />

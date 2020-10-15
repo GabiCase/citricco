@@ -2,7 +2,8 @@ import React from "react";
 
 import './Index.css'
 
-import Container from "react-bootstrap/Container";
+import { Container, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom'
 import Carrousel from "./Carrousel";
 import TrendCarrousel from "./TrendCarrousel";
 
@@ -11,7 +12,6 @@ export default () => {
     <Container>
 
       <Carrousel />
-
       <div className="intro">
         <h4>About us</h4>
         <p>
@@ -23,6 +23,9 @@ export default () => {
           the materials. <br />
           Hope you enjoy the results as much as we enjoy the making.<br></br> ♡ ♡ Un beso!
         </p>
+      </div>
+      <div style={{ width: '100 %' }}>
+        <Button className="start"><Link to="/products/all">Start shopping!</Link></Button>
       </div>
       <TrendCarrousel />
 

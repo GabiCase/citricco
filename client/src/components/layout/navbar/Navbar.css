@@ -3,15 +3,17 @@
 }
 
 .payment-image {
-    width: 100px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
+
 
 a {
     color: #747474;
     text-decoration: none;
     background-color: transparent;
 }
-
 
 .navbar.container {
     margin-bottom: 40px;
@@ -21,13 +23,11 @@ a {
     background-color: transparent;
     border: 0;
 }
-
 .col-suggestion img {
     width: 150px;
     height: 150px;
     object-fit: cover;
 }
-
 .suggestions-box {
     padding: 80px;
     justify-content: space-between;
@@ -44,6 +44,7 @@ a {
 .user-logo.transparent a {
     color: transparent;
 }
+
 
 .user-logo.transparent a.dropdown-item {
     color: black;
@@ -82,7 +83,6 @@ p.name {
 
 a .nav-link {
     margin: 0;
-
 }
 
 .btn-secondary:hover {
@@ -102,13 +102,127 @@ a .nav-link {
     ;
 }
 
+h3.text-center {
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+.bottom-20 {
+    padding: 20px 80px;
+    margin-bottom: 0;
+    margin-top:0;
+    padding-top:0;
+    padding-bottom:0;
+    height: 200px;
+}
+
+.trash {
+    height: 18px;
+    object-fit: cover;
+}
+
+.product-box{
+    margin-top:0;   
+    margin-bottom: 0;
+    padding-top: 20px;
+    border-top: 1px solid grey;
+    
+}
+
+.address {
+    padding: 0 80px;
+}
+
 button#dropdown-button-drop-down {
     margin: 0;
 }
-
 
 .dropdown-menu {
     position: absolute;
     top: 154%;
     left: -25px;
+}
+
+.empty-cart {
+    padding: 0 80px;
+}
+
+.checkout {
+    margin-top: 40px;
+    padding: 0 80px;
+}
+
+
+
+
+@media (max-width: 576px){
+    .address {
+        text-align:center;
+        margin-top: 40px;
+    }
+    .empty-cart {
+        text-align:center;
+    }
+
+    div.checkout{
+        text-align:center;
+        border-bottom: 0.8px solid grey;
+    }
+    .bottom-20{
+        height: 300px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .bottom-20 h4 {
+        padding-top: 8px;
+        font-size: 15.5px;
+        text-align: right;
+    }
+    .bottom-20 p{
+
+        text-align: right;
+    }
+    .remove {
+       text-align: left;
+    }
+
+}
+@media (min-width:577px) and (max-width: 766px){
+    .bottom-20{
+        height: 200px;   
+    }
+     .address {
+        text-align:center;
+        margin-top: 40px;
+    }
+    .empty-cart {
+        text-align:center;
+    }
+    div.checkout{
+        text-align:center;
+        border-bottom: 0.8px solid grey;
+    }
+   .address{ 
+       margin-top: 30px;
+   } 
+
+}
+
+@media (min-width: 767px) and (max-width: 988px){
+    .bottom-20 {
+    height: 200px;
+    }
+  .address {
+        text-align:center;
+        margin-top: 40px;
+    }
+    .empty-cart {
+        text-align:center;
+    }
+    div.checkout{
+        text-align:center;
+        border-bottom: 0.8px solid grey;
+    }
+   .address{ 
+       margin-top: 30px;
+   } 
 }

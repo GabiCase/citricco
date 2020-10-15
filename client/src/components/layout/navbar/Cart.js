@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import CartCard from "./CartCard";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class Cart extends Component {
@@ -17,50 +17,67 @@ class Cart extends Component {
   componentDidMount = () => this.props.calculateTotal(this.state.cart);
 
   render() {
+    console.log('props en cart', this.props)
     return (
-      <Container>
-        <div>
-          <h1>Cart</h1>
-          <Row>
-            <Col sm={12} md={5}>
+      <Container className="cart-total">
+        <h3 className="text-center">Cart</h3>
 
-
-              <div>
-                {this.props.cart.length >= 1 ? (
-                  this.props.cart.map((elm) => (
+        <Row>
+          <Col sm={12} md={12} lg={6}>
+            <div>
+              {this.props.cart.length >= 1 ? (
+                this.props.cart.map((elm) => (
+                  <>
                     <CartCard
                       key={elm._id}
                       {...elm}
                       removeFromCart={() => this.props.removeFromCart(elm)}
                       decrease={() => this.props.decrease(elm)}
-                      increase={() => this.props.increase(elm)}
-                    />
-                  ))
-                ) : (
+                      increase={() => this.props.increase(elm)} />
+
+
+                  </>
+                ))
+              ) : (
                   <>
-                    <h4>It appears that your cart is currently empty!</h4>
-                    <p>Start shopping</p>
-                    <Link to="/products/all">here</Link>
+                    <div className="empty-cart">
+                      <h4>It appears that your cart is currently empty!</h4>
+                      <Button><Link to="/products/all">Start shopping!</Link></Button>
+                    </div>
+
                   </>
                 )}
-                <p>Total: {this.props.total}€</p>
+              {this.props.cart.length >= 1 &&
+                <div className="checkout">
+                  <p>Total:<strong> {this.props.total}€</strong></p>
 
-                <Link to="/cart">Checkout</Link>
-              </div>
+                  {this.props.loggedInUser ?
+                    <Button><Link className="link-cart" to="/payment" > Checkout</Link></Button>
+                    :
+                    <Button><Link className="link-cart" to="/account/login"> Checkout</Link></Button>
+                  }
 
-            </Col>
+                </div>}
 
-            <Col sm={12} md={5}>
-              <h3> Address</h3>
-              {this.props.loggedInUser ? (
-                <div>{this.props.loggedInUser.street}</div>
-              ) : (
-                <Link to="/account/login">Log in to buy</Link>
+
+
+            </div>
+
+          </Col>
+
+          <Col sm={12} md={12} lg={6} className="address">
+            <h5> Address</h5>
+            {this.props.loggedInUser ? (
+              <div>{this.props.loggedInUser.street}</div>
+            ) : (
+                <Button>
+                  <Link to="/account/login">Log in to buy</Link>
+                </Button>
               )}
-            </Col>
-          </Row>
-        </div>
-      </Container>
+          </Col>
+        </Row>
+
+      </Container >
     );
   }
 }

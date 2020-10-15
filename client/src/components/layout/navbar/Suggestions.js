@@ -45,14 +45,18 @@ class Suggestions extends Component {
                 <Link to="/products/all">here</Link>
               </p>
             ) : (
-              suggFiltered.map((elm) => (
-                <SuggestionCard
-                  hiddeSuggestion={this.props.hiddeSuggestion}
-                  key={elm._id}
-                  {...elm}
-                />
-              ))
-            )}
+
+
+                suggFiltered.map((elm) =>
+                  <SuggestionCard
+                    hiddeSuggestion={this.props.hiddeSuggestion}
+                    key={elm._id}
+
+                    {...elm} />)
+              )
+            }
+
+
           </Row>
         </Container>
       </>

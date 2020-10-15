@@ -1,0 +1,10 @@
+.form-register{
+justify-content:center;
+} 
+
+.register-box {
+    background-color: rgb(212, 236, 210, 0.3);
+    width: 100%;
+    padding: 70px;
+    border-radius: 16px;
+}

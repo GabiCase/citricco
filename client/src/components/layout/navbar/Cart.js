@@ -23,7 +23,7 @@ class Cart extends Component {
         <h3 className="text-center">Cart</h3>
 
         <Row>
-          <Col sm={12} md={12} lg={6}>
+          <Col xs={12} sm={12} md={6} lg={6}>
             <div>
               {this.props.cart.length >= 1 ? (
                 this.props.cart.map((elm) => (
@@ -65,7 +65,7 @@ class Cart extends Component {
 
           </Col>
 
-          <Col sm={12} md={12} lg={6} className="address">
+          <Col xs={12} sm={12} md={6} lg={6} className="address">
             <h5> Address</h5>
             {this.props.loggedInUser ? (
               <div>{this.props.loggedInUser.street}</div>

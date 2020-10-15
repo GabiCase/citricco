@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./Footer.css";
 
 export default () => {
+
   return (
     <div className="footer">
       <Container>
@@ -25,3 +26,4 @@ export default () => {
     </div>
   );
 };
+

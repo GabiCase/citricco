@@ -10,7 +10,7 @@ a.add {
 }
 
 .wrapper {
-  height: 400px;
+  height: auto;
   text-align: center;
 }
 

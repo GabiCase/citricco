@@ -13,7 +13,9 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Cart from "./layout/navbar/Cart";
+
 import Footer from "./layout/footer/Footer";
+
 
 import Payment from "./pages/payment/Payment";
 
@@ -29,7 +31,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      loggedInUser: undefined,
+      loggedInUser: null,
       cart: [],
       total: 0,
       quantity: 0,
@@ -46,12 +48,15 @@ class App extends Component {
       console.log("El usuario es", this.state.loggedInUser)
     );
 
-  componentDidMount = () => {
+
+  fetchUser = () => {
     this.authService
       .loggedin()
       .then((res) => this.setState({ loggedInUser: res.data }))
       .catch((err) => this.setState({ loggedInUser: null }));
   };
+
+  componentDidMount = () => !this.state.loggedInUser & this.fetchUser()
 
   addToCart = (product) => {
     const cartCopy = [...this.state.cart];
@@ -171,6 +176,7 @@ class App extends Component {
               <ProductsList
                 addToCart={this.addToCart}
                 loggedInUser={this.state.loggedInUser}
+                fetchUser={this.fetchUser}
               />
             )}
           />
@@ -221,8 +227,8 @@ class App extends Component {
                   {...props}
                 />
               ) : (
-                <Redirect to="/" />
-              )
+                  <Redirect to="/" />
+                )
             }
           />
           <Route
@@ -233,10 +239,11 @@ class App extends Component {
                   userId={this.state.loggedInUser._id}
                   addToCart={this.addToCart}
                   refresh={this.loadProducts}
+                  fetchUser={this.fetchUser}
                 />
               ) : (
-                <Redirect to="/" />
-              )
+                  <Redirect to="/" />
+                )
             }
           />
 
@@ -258,7 +265,10 @@ class App extends Component {
 
           <Route path="/payment" render={() => <Payment />} />
         </Switch>
-        <Footer></Footer>
+
+        <Footer />
+
+      
       </>
     );
   }

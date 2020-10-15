@@ -30,6 +30,7 @@ class ProductCard extends Component {
     if (this.state.favImg) {
       this.productsService
         .fav(userId, { fav: productId })
+        .then(() => this.props.fetchUser())
         .then(() => this.props.refreshList())
         .catch((err) => console.log(err));
     } else {
@@ -48,7 +49,7 @@ class ProductCard extends Component {
           <Card.Img
             className="300product"
             variant="top"
-            src={this.props.imageUrl[0]}
+            src={this.props.imageUrl[1]}
           />
           <Card.Body>
             <div className="card-component">

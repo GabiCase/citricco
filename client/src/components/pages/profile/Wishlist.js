@@ -41,6 +41,7 @@ class Wishlist extends Component {
                   addToCart={this.props.addToCart}
                   userId={this.props.userId}
                   getUserFav={this.getUserFav}
+                  fetchUser={this.props.fetchUser}
                 />
               ))}
             </div>

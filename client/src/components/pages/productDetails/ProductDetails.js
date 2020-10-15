@@ -101,10 +101,10 @@ class ProductDetails extends Component {
                     )}
                     <div className="buttons">
                       <Row>
-                        <Col xs={6} md={6} lg={12}>
+                        <Col xs={{ offset: 2 }} xs={4} md={6} lg={12}>
                           <Button onClick={() => this.props.addToCartDet(this.state.product)} clasName="btn btn-dark"><Link to="/cart" >Buy it now!</Link></Button>
                         </Col>
-                        <Col xs={6} md={6} lg={12}>
+                        <Col xs={{ offset: 2 }} xs={4} md={6} lg={12}>
                           <Button onClick={() => this.props.addToCartDet(this.state.product)}>Add to cart</Button>
                         </Col>
 

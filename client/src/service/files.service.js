@@ -1,15 +1,12 @@
 import axios from "axios";
 
 export default class fileService {
-    constructor() {
-        this.api = axios.create({
-            baseURL: "http://localhost:5000/api/files",
-            withCredentials: true
-        });
-    }
-    // prueba = () => {
-    //     console.log('HOLAAAAA')
-    // }
+  constructor() {
+    this.api = axios.create({
+      baseURL: "http://servercitricco.herokuapp.com/api/files",
+      withCredentials: true,
+    });
+  }
 
-    uploadImage = imageForm => this.api.post('/upload', imageForm);
+  uploadImage = (imageForm) => this.api.post("/upload", imageForm);
 }

@@ -3,7 +3,7 @@ import axios from "axios";
 export default class ProductService {
   constructor() {
     this.api = axios.create({
-      baseURL: "http://servercitricco.herokuapp.com/api",
+      baseURL: "https://servercitricco.herokuapp.com/api",
     });
   }
 

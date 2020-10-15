@@ -3,7 +3,7 @@ import axios from "axios";
 export default class fileService {
   constructor() {
     this.api = axios.create({
-      baseURL: "http://servercitricco.herokuapp.com/api/files",
+      baseURL: "https://servercitricco.herokuapp.com/api/files",
       withCredentials: true,
     });
   }

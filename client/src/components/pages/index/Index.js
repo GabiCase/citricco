@@ -12,6 +12,7 @@ export default () => {
     <Container>
 
       <Carrousel />
+
       <div className="intro">
         <h4>About us</h4>
         <p>
@@ -24,9 +25,11 @@ export default () => {
           Hope you enjoy the results as much as we enjoy the making.<br></br> ♡ ♡ Un beso!
         </p>
       </div>
+
       <div style={{ width: '100 %' }}>
         <Button className="start"><Link to="/products/all">Start shopping!</Link></Button>
       </div>
+
       <TrendCarrousel />
 
     </Container>

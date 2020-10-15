@@ -97,16 +97,16 @@ class App extends Component {
     { this.state.quantity && this.showToast() }
     this.showAlert()
     this.setState({ cart: cartCopy, quantity: 0 });
-
-
   };
 
   showAlert = () => {
     console.log(this.state.quantity)
     if (this.state.quantity <= 0) {
-      this.setState({ alert: true })
-    } else {
+
       this.setState({ alert: false })
+    } else {
+      this.setState({ alert: true })
+
     }
   }
 

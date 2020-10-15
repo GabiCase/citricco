@@ -13,7 +13,9 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Cart from "./layout/navbar/Cart";
-import Footer from './layout/footer/Footer'
+
+import Footer from "./layout/footer/Footer";
+
 
 import Payment from "./pages/payment/Payment";
 
@@ -263,7 +265,10 @@ class App extends Component {
 
           <Route path="/payment" render={() => <Payment />} />
         </Switch>
+
         <Footer />
+
+      
       </>
     );
   }

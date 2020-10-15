@@ -40,16 +40,13 @@ h1 {
 }
 
 .name.card-title.h5 {
-    margin-left: 8px;
+
     margin-bottom: 3px;
     font-size: 1.1em;
     font-weight: 400;
 }
 
-.price.card-title.h5 {
-    margin-left: 8px;
 
-}
 
 .card-body {
     flex: 1 1 auto;

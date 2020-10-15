@@ -111,3 +111,13 @@ button.btn.btn-sm {
     background-color: #f8f9fa00 !important;
     border-bottom: 1px solid #d4ecd2;
 }
+
+.container {
+    min-height: 65vh;
+}
+
+button.btn.btn-sm.btn-sm {
+    border: 0px;
+    margin: 0;
+    padding: 0;
+}

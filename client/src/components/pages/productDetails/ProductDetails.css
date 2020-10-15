@@ -1,5 +1,19 @@
 .sliderimg img {
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    height: 400px;;
+    
     object-fit: cover;
+}
+
+.details .detailsp{
+    font-weight: 300;
+    font-size: 15.5px;
+}
+
+.categoryp {
+    font-size: 14px;
+}
+
+.img-details{
+    margin-bottom: 20px;
 }

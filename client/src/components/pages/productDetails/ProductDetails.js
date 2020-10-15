@@ -55,21 +55,41 @@ class ProductDetails extends Component {
           <>
             <Container className="details">
               <main>
+                <div >
+                  {this.props.loggedInUser &&
+                    this.props.loggedInUser.role === "admin" && (
+                      <Button
+                        onClick={() => this.handleModalEdit(true)}
+                        size="sm"
+                      >
+                        Edit product
+                      </Button>
+                    )}
+                  {this.props.loggedInUser &&
+                    this.props.loggedInUser.role === "admin" && (
+                      <Button onClick={this.delete} size="sm">
+                        Delete product
+                      </Button>
+                    )}
+
+                </div>
+
+
                 <Row>
-                  <Col sm={12} md={5}>
+                  <Col sm={10} md={6} className="img-details">
                     <SimpleSlider imageUrl={this.state.product.imageUrl} />
                   </Col>
-                  <Col sm={12} md={4}>
+                  <Col sm={10} md={6}>
                     <h4>{this.state.product.name}</h4>
-                    {this.state.product.description}
-                    <div>{this.state.product.price}€</div>
                     <div>
-                      <Link
+                      <p className="categoryp"> <Link
                         to={`/products/category/${this.state.product.category}`}
                       >
-                        {this.state.product.category}
-                      </Link>
+                        Category: {this.state.product.category}
+                      </Link></p>
                     </div>
+                    <p className="detailsp">{this.state.product.description}</p>
+                    <div>{this.state.product.price}€</div>
                     {this.state.product && (
                       <CounterDetails
                         props={this.props}
@@ -81,37 +101,24 @@ class ProductDetails extends Component {
                     )}
                     <div className="buttons">
                       <Row>
-                        <Col>
+                        <Col xs={6} md={6} lg={12}>
+                          <Button onClick={() => this.props.addToCartDet(this.state.product)} clasName="btn btn-dark"><Link to="/cart" >Buy it now!</Link></Button>
+                        </Col>
+                        <Col xs={6} md={6} lg={12}>
                           <Button onClick={() => this.props.addToCartDet(this.state.product)}>Add to cart</Button>
                         </Col>
-                        <Col>
-                          <Link onClick={() => this.props.addToCartDet(this.state.product)} to="/cart" clasName="btn btn-dark">Buy it now!</Link>
-                        </Col>
-                        <Col ml={12}>
-                          <Button>Add to wishlist</Button>
-                        </Col>
 
-                        {this.props.loggedInUser &&
-                          this.props.loggedInUser.role === "admin" && (
-                            <Button
-                              onClick={() => this.handleModalEdit(true)}
-                              size="sm"
-                            >
-                              Edit product
-                            </Button>
-                          )}
-                        {this.props.loggedInUser &&
-                          this.props.loggedInUser.role === "admin" && (
-                            <Button onClick={this.delete} size="sm">
-                              Delete product
-                            </Button>
-                          )}
+
                       </Row>
 
                     </div>
                   </Col>
                 </Row>
               </main>
+
+
+
+
             </Container>
             <Modal
               show={this.state.showModalEdit}

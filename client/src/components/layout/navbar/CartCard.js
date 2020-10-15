@@ -44,10 +44,6 @@ const CartCard = ({ imageUrl, name, quantity, price, removeFromCart, decrease, i
                             </Row>
 
 
-
-
-
-
                         </Col>
 
                     </Row>
@@ -57,10 +53,11 @@ const CartCard = ({ imageUrl, name, quantity, price, removeFromCart, decrease, i
 
 
             </Container>
-      )
+        </>
+    )
 }
 
 
-          
+
 
 export default CartCard

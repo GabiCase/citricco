@@ -12,7 +12,6 @@ export default () => {
 
       <Carrousel />
 
-      <TrendCarrousel />
       <div className="intro">
         <h4>About us</h4>
         <p>
@@ -25,10 +24,8 @@ export default () => {
           Hope you enjoy the results as much as we enjoy the making.<br></br> ♡ ♡ Un beso!
         </p>
       </div>
-      <div className="footer">
+      <TrendCarrousel />
 
-      </div>
- 
     </Container>
   );
 };

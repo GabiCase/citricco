@@ -37,6 +37,7 @@ class App extends Component {
       quantity: 0,
       quantityDetails: 0,
       products: undefined,
+      alert: false,
       key: "",
     };
     this.authService = new authService();
@@ -84,12 +85,23 @@ class App extends Component {
       itemInCart = {
         ...product,
         quantity: this.state.quantity,
-      };
+      }
 
       cartCopy.push(itemInCart);
     }
     this.setState({ cart: cartCopy, quantity: 0 });
+    this.showAlert()
   };
+
+  showAlert = () => {
+    console.log(this.state.quantity)
+    if (this.state.quantity <= 0) {
+      this.setState({ alert: false })
+    } else {
+      this.setState({ alert: true })
+    }
+  }
+
 
   removeFromCart = (productToRemove) => {
     const removeCopy = [...this.state.cart];
@@ -134,12 +146,15 @@ class App extends Component {
 
   counterIncrement = () => {
     this.setState({ quantity: this.state.quantity + 1 });
+    this.showAlert()
   };
 
   counterDecrement = () => {
+    console.log(this.state.quantity)
     this.state.quantity > 0
       ? this.setState({ quantity: this.state.quantity - 1 })
       : (this.state.quantity = 0);
+    this.showAlert()
   };
 
   componentDidMount = () => {
@@ -198,6 +213,7 @@ class App extends Component {
                 addToCartDet={this.addToCartDet}
                 counterIncrement={this.counterIncrement}
                 counterDecrement={this.counterDecrement}
+                alert={this.state.alert}
               />
             )}
           />
@@ -268,7 +284,7 @@ class App extends Component {
 
         <Footer />
 
-      
+
       </>
     );
   }

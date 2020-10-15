@@ -17,6 +17,7 @@ class ProductDetails extends Component {
     this.state = {
       product: undefined,
       showModalEdit: false,
+
     };
     this.productService = new productService();
   }
@@ -45,7 +46,6 @@ class ProductDetails extends Component {
   };
 
 
-
   render() {
 
 
@@ -60,14 +60,14 @@ class ProductDetails extends Component {
                     this.props.loggedInUser.role === "admin" && (
                       <Button
                         onClick={() => this.handleModalEdit(true)}
-                        size="sm"
+
                       >
                         Edit product
                       </Button>
                     )}
                   {this.props.loggedInUser &&
                     this.props.loggedInUser.role === "admin" && (
-                      <Button onClick={this.delete} size="sm">
+                      <Button onClick={this.delete}>
                         Delete product
                       </Button>
                     )}
@@ -97,15 +97,24 @@ class ProductDetails extends Component {
                         counterIncrement={this.props.counterIncrement}
                         counterDecrement={this.props.counterDecrement}
                         counterReset={this.counterReset}
+
                       />
+
                     )}
+
+                    {this.props.alert ? (<p className="red-quantity" style={{ color: 'rgb(207, 40, 40)' }}>Please, choose a quantity.</p>)
+                      :
+                      (<p className="red-quantity" style={{ color: 'transparent' }}>Please, choose a quantity.</p>)}
                     <div className="buttons">
                       <Row>
-                        <Col xs={{ offset: 2 }} xs={4} md={6} lg={12}>
+                        <Col xs={{ offset: 2 }} xs={4} md={6} lg={12} className="details-button">
                           <Button onClick={() => this.props.addToCartDet(this.state.product)} clasName="btn btn-dark"><Link to="/cart" >Buy it now!</Link></Button>
                         </Col>
-                        <Col xs={{ offset: 2 }} xs={4} md={6} lg={12}>
+                        <Col xs={{ offset: 2 }} xs={4} md={6} lg={12} className="details-button">
+
                           <Button onClick={() => this.props.addToCartDet(this.state.product)}>Add to cart</Button>
+
+
                         </Col>
 
 

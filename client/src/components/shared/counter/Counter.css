@@ -11,9 +11,7 @@
 .number-input input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
-.number-input {
-  margin-bottom: 3rem;
-}
+
 .number-input button {
   -webkit-appearance: none;
   background-color: transparent;

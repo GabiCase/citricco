@@ -4,28 +4,22 @@ import { Button } from "react-bootstrap";
 const CounterDetails = ({ quantity, counterDecrement, counterIncrement }) => {
 
     return (
-        <div>
-            <Button
-                className="inc btn btn-light"
-                onClick={() => counterIncrement()}
-            >
-                +
-        </Button>
-            <p>{quantity}</p>
-            <Button
-                className="dec btn btn-light"
-                onClick={() => counterDecrement()}
-            >
-                -
-        </Button>
-            {/* <Button
-                    className="reset btn btn-light"
-                    onClick={() => this.props.counterReset()}
-                >
-                    Reset
-        </Button> */}
 
-        </div>
+
+        <>
+            < div className="def-number-input number-input">
+
+                <button onClick={() => counterIncrement()} className="plus"></button>
+                <input className="quantity" name="quantity" value={quantity} onChange={() => console.log('change')}
+                    type="number" />
+                <button onClick={() => counterDecrement()} className="minus"></button>
+
+            </div>
+
+
+
+
+        </>
     );
 }
 export default CounterDetails;
